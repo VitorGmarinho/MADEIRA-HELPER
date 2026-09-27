@@ -11651,3 +11651,65 @@ body.foxglove-modal-open {
     }
 
 }
+
+/* =========================================================
+   FOXGLOVE MODAL — WEBSITE ACTIONS
+========================================================= */
+
+.foxglove-modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+
+/* FOXGLOVE WEBSITE BUTTON */
+
+.foxglove-website-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    padding: 15px 21px;
+
+    border: 1px solid rgba(21, 61, 50, 0.18);
+    border-radius: 999px;
+
+    background: transparent;
+    color: #153d32;
+
+    text-decoration: none;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.foxglove-website-link span {
+    font-size: 1rem;
+
+    transition: transform 0.25s ease;
+}
+
+
+.foxglove-website-link:hover {
+    background: #f4d35e;
+    color: #153d32;
+    border-color: #f4d35e;
+
+    transform: translateY(-2px);
+}
+
+
+.foxglove-website-link:hover span {
+    transform: translate(2px, -2px);
+}
