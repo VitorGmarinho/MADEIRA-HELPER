@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Madeira Helper administration dashboard."
+    >
+
+    <title>Admin Dashboard | Madeira Helper</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="admin-page">
+
+    <div class="admin-layout">
+
+
+        <!-- ========================================
+             SIDEBAR
+        ========================================= -->
+
+        <aside class="admin-sidebar">
+
+            <a href="index.html" class="admin-logo">
+
+                <img
+                    src="images/madeira-helper-logo.png"
+                    alt="Madeira Helper"
+                >
+
+            </a>
+
+
+            <div class="admin-sidebar-label">
+                ADMINISTRATION
+            </div>
+
+
+            <nav class="admin-navigation">
+
+
+                <!-- DASHBOARD -->
+
+                <a
+                    href="admin.html"
+                    class="admin-nav-item active"
+                >
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+
+                <!-- CUSTOMER REQUESTS -->
+
+                <a
+                    href="admin-requests.html"
+                    class="admin-nav-item"
+                >
+                    <span>◎</span>
+                    Customer Requests
+                </a>
+
+
+                <!-- BUSINESS APPLICATIONS -->
+
+                <a
+                    href="admin-business-applications.html"
+                    class="admin-nav-item"
+                >
+                    <span>▦</span>
+                    Business Applications
+                </a>
+
+
+                <!-- ACTIVE BUSINESSES -->
+
+                <a
+                    href="admin-businesses.html"
+                    class="admin-nav-item"
+                >
+                    <span>✓</span>
+                    Active Businesses
+                </a>
+
+
+                <!-- INACTIVE BUSINESSES -->
+
+                <a
+                    href="admin-inactive-businesses.html"
+                    class="admin-nav-item"
+                >
+                    <span>○</span>
+                    Inactive Businesses
+                </a>
+
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <button
+                    class="admin-logout-button"
+                    id="adminLogoutButton"
+                    type="button"
+                >
+                    Log out
+                </button>
+
+
+                <a href="index.html">
+                    ← Back to website
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ========================================
+             MAIN AREA
+        ========================================= -->
+
+        <main class="admin-main">
+
+
+            <!-- ========================================
+                 TOP BAR
+            ========================================= -->
+
+            <header class="admin-topbar">
+
+                <div>
+
+                    <span class="admin-eyebrow">
+                        MADEIRA HELPER
+                    </span>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        VM
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Vitor Marinho
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ========================================
+                 DASHBOARD CONTENT
+            ========================================= -->
+
+            <section class="admin-content">
+
+
+                <!-- ========================================
+                     WELCOME
+                ========================================= -->
+
+                <div class="admin-welcome">
+
+                    <div>
+
+                        <span class="admin-section-label">
+                            OVERVIEW
+                        </span>
+
+                        <h2>
+                            Welcome back, Vitor.
+                        </h2>
+
+                        <p>
+                            Here's what's happening with Madeira Helper.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     STAT CARDS
+                ========================================= -->
+
+                <div class="admin-stats">
+
+
+                    <!-- TOTAL REQUESTS -->
+
+                    <a
+                        href="admin-requests.html"
+                        class="admin-stat-card admin-stat-link"
+                    >
+
+                        <span class="admin-stat-title">
+                            Customer Requests
+                        </span>
+
+                        <strong id="totalRequests">
+                            —
+                        </strong>
+
+                        <small>
+                            Total requests
+                        </small>
+
+                    </a>
+
+
+
+                    <!-- PENDING REQUESTS -->
+
+                    <a
+                        href="admin-requests.html"
+                        class="admin-stat-card admin-stat-link"
+                    >
+
+                        <span class="admin-stat-title">
+                            Pending Requests
+                        </span>
+
+                        <strong id="pendingRequests">
+                            —
+                        </strong>
+
+                        <small>
+                            Need attention
+                        </small>
+
+                    </a>
+
+
+
+                    <!-- BUSINESS APPLICATIONS -->
+
+                    <a
+                        href="admin-business-applications.html"
+                        class="admin-stat-card admin-stat-link"
+                    >
+
+                        <span class="admin-stat-title">
+                            Business Applications
+                        </span>
+
+                        <strong id="businessApplications">
+                            —
+                        </strong>
+
+                        <small>
+                            Awaiting review
+                        </small>
+
+                    </a>
+
+
+
+                    <!-- ACTIVE BUSINESSES -->
+
+                    <a
+                        href="admin-businesses.html"
+                        class="admin-stat-card admin-stat-link"
+                    >
+
+                        <span class="admin-stat-title">
+                            Active Businesses
+                        </span>
+
+                        <strong id="activeBusinesses">
+                            —
+                        </strong>
+
+                        <small>
+                            In your network
+                        </small>
+
+                    </a>
+
+
+
+                    <!-- INACTIVE BUSINESSES -->
+
+                    <a
+                        href="admin-inactive-businesses.html"
+                        class="admin-stat-card admin-stat-link"
+                    >
+
+                        <span class="admin-stat-title">
+                            Inactive Businesses
+                        </span>
+
+                        <strong id="inactiveBusinesses">
+                            —
+                        </strong>
+
+                        <small>
+                            Currently inactive
+                        </small>
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- ========================================
+                     RECENT ACTIVITY
+                ========================================= -->
+
+                <section class="admin-panel">
+
+
+                    <div class="admin-panel-header">
+
+                        <div>
+
+                            <span class="admin-section-label">
+                                RECENT ACTIVITY
+                            </span>
+
+                            <h2>
+                                Latest requests
+                            </h2>
+
+                        </div>
+
+
+                        <a
+                            href="admin-requests.html"
+                            class="admin-view-all-link"
+                        >
+                            View all requests →
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- REQUESTS WILL APPEAR HERE -->
+
+                    <div id="recentRequestsContainer">
+
+                        <div class="admin-empty-state">
+
+                            <div class="admin-empty-icon">
+                                MH
+                            </div>
+
+                            <h3>
+                                Loading requests...
+                            </h3>
+
+                            <p>
+                                Please wait while your dashboard loads.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ========================================
+         ADMIN SECURITY + DASHBOARD DATA
+    ========================================= -->
+
+    <script>
+
+
+        /*
+        ==========================================
+        CHECK ADMIN SESSION
+        ==========================================
+        */
+
+        async function checkAdminSession() {
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-session",
+                    {
+                        method: "GET",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                if (!response.ok) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return false;
+                }
+
+
+                const result =
+                    await response.json();
+
+
+                if (!result.authenticated) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return false;
+                }
+
+
+                return true;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin session error:",
+                    error
+                );
+
+
+                window.location.replace(
+                    "admin-login.html"
+                );
+
+
+                return false;
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        SAFE TEXT
+        ==========================================
+        */
+
+        function escapeHTML(value) {
+
+            const div =
+                document.createElement("div");
+
+
+            div.textContent =
+                value === null ||
+                value === undefined
+                    ? ""
+                    : String(value);
+
+
+            return div.innerHTML;
+        }
+
+
+
+        /*
+        ==========================================
+        FORMAT DATE
+        ==========================================
+        */
+
+        function formatRequestDate(dateValue) {
+
+            if (!dateValue) {
+                return "—";
+            }
+
+
+            const date =
+                new Date(dateValue);
+
+
+            if (Number.isNaN(date.getTime())) {
+                return "—";
+            }
+
+
+            return date.toLocaleDateString(
+                "en-GB",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+        }
+
+
+
+        /*
+        ==========================================
+        DISPLAY RECENT REQUESTS
+        ==========================================
+        */
+
+        function displayRecentRequests(requests) {
+
+            const container =
+                document.getElementById(
+                    "recentRequestsContainer"
+                );
+
+
+            if (
+                !Array.isArray(requests) ||
+                requests.length === 0
+            ) {
+
+                container.innerHTML = `
+
+                    <div class="admin-empty-state">
+
+                        <div class="admin-empty-icon">
+                            MH
+                        </div>
+
+                        <h3>
+                            No requests yet
+                        </h3>
+
+                        <p>
+                            New customer requests will
+                            appear here.
+                        </p>
+
+                    </div>
+                `;
+
+
+                return;
+            }
+
+
+            let rows = "";
+
+
+            requests.forEach((request) => {
+
+                const customerName =
+                    `${request.first_name || ""} ${request.last_name || ""}`
+                        .trim() || "Customer";
+
+
+                rows += `
+
+                    <tr>
+
+                        <td>
+
+                            <strong>
+                                MH-${String(
+                                    request.request_id
+                                ).padStart(6, "0")}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(customerName)}
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                request.service_category
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                request.location
+                            )}
+                        </td>
+
+
+                        <td>
+
+                            <span class="admin-status-badge">
+
+                                ${escapeHTML(
+                                    request.status
+                                )}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            ${formatRequestDate(
+                                request.created_at
+                            )}
+
+                        </td>
+
+                    </tr>
+                `;
+            });
+
+
+
+            container.innerHTML = `
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Reference
+                                </th>
+
+                                <th>
+                                    Customer
+                                </th>
+
+                                <th>
+                                    Service
+                                </th>
+
+                                <th>
+                                    Location
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+                            ${rows}
+                        </tbody>
+
+                    </table>
+
+                </div>
+            `;
+        }
+
+
+
+        /*
+        ==========================================
+        LOAD DASHBOARD DATA
+        ==========================================
+        */
+
+        async function loadDashboardData() {
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-dashboard-data",
+                    {
+                        method: "GET",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to load dashboard data."
+                    );
+                }
+
+
+                const data =
+                    await response.json();
+
+
+
+                /*
+                ==========================================
+                UPDATE DASHBOARD NUMBERS
+                ==========================================
+                */
+
+                document.getElementById(
+                    "totalRequests"
+                ).textContent =
+                    data.totalRequests ?? 0;
+
+
+                document.getElementById(
+                    "pendingRequests"
+                ).textContent =
+                    data.pendingRequests ?? 0;
+
+
+                document.getElementById(
+                    "businessApplications"
+                ).textContent =
+                    data.businessApplications ?? 0;
+
+
+                document.getElementById(
+                    "activeBusinesses"
+                ).textContent =
+                    data.activeBusinesses ?? 0;
+
+
+                document.getElementById(
+                    "inactiveBusinesses"
+                ).textContent =
+                    data.inactiveBusinesses ?? 0;
+
+
+
+                /*
+                ==========================================
+                DISPLAY RECENT REQUESTS
+                ==========================================
+                */
+
+                displayRecentRequests(
+                    data.recentRequests
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Dashboard data error:",
+                    error
+                );
+
+
+                const container =
+                    document.getElementById(
+                        "recentRequestsContainer"
+                    );
+
+
+                container.innerHTML = `
+
+                    <div class="admin-empty-state">
+
+                        <div class="admin-empty-icon">
+                            !
+                        </div>
+
+                        <h3>
+                            Unable to load dashboard
+                        </h3>
+
+                        <p>
+                            The dashboard could not load
+                            the Madeira Helper data.
+                        </p>
+
+                    </div>
+                `;
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        LOG OUT
+        ==========================================
+        */
+
+        async function logoutAdmin() {
+
+            const logoutButton =
+                document.getElementById(
+                    "adminLogoutButton"
+                );
+
+
+            if (!logoutButton) {
+                return;
+            }
+
+
+            logoutButton.disabled = true;
+
+            logoutButton.textContent =
+                "Logging out...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/.netlify/functions/admin-logout",
+                        {
+                            method: "POST",
+                            credentials: "same-origin"
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to log out."
+                    );
+                }
+
+
+                window.location.replace(
+                    "admin-login.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin logout error:",
+                    error
+                );
+
+
+                logoutButton.disabled =
+                    false;
+
+
+                logoutButton.textContent =
+                    "Log out";
+
+
+                window.alert(
+                    "Unable to log out. Please try again."
+                );
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        START DASHBOARD
+        ==========================================
+        */
+
+        async function startAdminDashboard() {
+
+            const authenticated =
+                await checkAdminSession();
+
+
+            if (!authenticated) {
+                return;
+            }
+
+
+            const logoutButton =
+                document.getElementById(
+                    "adminLogoutButton"
+                );
+
+
+            if (logoutButton) {
+
+                logoutButton.addEventListener(
+                    "click",
+                    logoutAdmin
+                );
+            }
+
+
+            await loadDashboardData();
+        }
+
+
+        startAdminDashboard();
+
+
+    </script>
+
+
+</body>
+
+</html>

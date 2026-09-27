@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Edit a Madeira Helper business."
+    >
+
+    <title>Edit Business | Madeira Helper Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="admin-page">
+
+    <div class="admin-layout">
+
+
+        <!-- ========================================
+             SIDEBAR
+        ========================================= -->
+
+        <aside class="admin-sidebar">
+
+            <a href="index.html" class="admin-logo">
+
+                <img
+                    src="images/madeira-helper-logo.png"
+                    alt="Madeira Helper"
+                >
+
+            </a>
+
+
+            <div class="admin-sidebar-label">
+                ADMINISTRATION
+            </div>
+
+
+            <nav class="admin-navigation">
+
+
+                <!-- DASHBOARD -->
+
+                <a
+                    href="admin.html"
+                    class="admin-nav-item"
+                >
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+
+                <!-- CUSTOMER REQUESTS -->
+
+                <a
+                    href="admin-requests.html"
+                    class="admin-nav-item"
+                >
+                    <span>◎</span>
+                    Customer Requests
+                </a>
+
+
+                <!-- BUSINESS APPLICATIONS -->
+
+                <a
+                    href="admin-business-applications.html"
+                    class="admin-nav-item"
+                >
+                    <span>▦</span>
+                    Business Applications
+                </a>
+
+
+                <!-- ACTIVE BUSINESSES -->
+
+                <a
+                    href="admin-businesses.html"
+                    class="admin-nav-item"
+                >
+                    <span>✓</span>
+                    Active Businesses
+                </a>
+
+
+                <!-- INACTIVE BUSINESSES -->
+
+                <a
+                    href="admin-inactive-businesses.html"
+                    class="admin-nav-item"
+                >
+                    <span>○</span>
+                    Inactive Businesses
+                </a>
+
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <button
+                    class="admin-logout-button"
+                    id="adminLogoutButton"
+                    type="button"
+                >
+                    Log out
+                </button>
+
+
+                <a href="index.html">
+                    ← Back to website
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ========================================
+             MAIN AREA
+        ========================================= -->
+
+        <main class="admin-main">
+
+
+            <!-- ========================================
+                 TOP BAR
+            ========================================= -->
+
+            <header class="admin-topbar">
+
+                <div>
+
+                    <span class="admin-eyebrow">
+                        MADEIRA HELPER
+                    </span>
+
+                    <h1>
+                        Edit Business
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        VM
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Vitor Marinho
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ========================================
+                 PAGE CONTENT
+            ========================================= -->
+
+            <section class="admin-content">
+
+
+                <!-- PAGE INTRO -->
+
+                <div class="admin-welcome">
+
+                    <div>
+
+                        <span class="admin-section-label">
+                            BUSINESS MANAGEMENT
+                        </span>
+
+                        <h2 id="editBusinessHeading">
+                            Edit business details
+                        </h2>
+
+                        <p>
+                            Update the information stored for this business.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="admin-businesses.html"
+                        class="admin-view-all-link"
+                        id="backToBusinessesLink"
+                    >
+                        ← Back to businesses
+                    </a>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     LOADING / ERROR AREA
+                ========================================= -->
+
+                <div
+                    id="businessEditStatus"
+                    class="admin-edit-status"
+                >
+                    Loading business details...
+                </div>
+
+
+
+                <!-- ========================================
+                     EDIT FORM
+                ========================================= -->
+
+                <section
+                    class="admin-panel admin-edit-business-panel"
+                    id="businessEditPanel"
+                    hidden
+                >
+
+                    <div class="admin-panel-header">
+
+                        <div>
+
+                            <span class="admin-section-label">
+                                BUSINESS DETAILS
+                            </span>
+
+                            <h2 id="businessFormTitle">
+                                Business information
+                            </h2>
+
+                        </div>
+
+
+                        <span
+                            id="businessCurrentStatus"
+                            class="admin-status-badge"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <form id="adminEditBusinessForm">
+
+
+                        <!-- BUSINESS ID -->
+
+                        <input
+                            type="hidden"
+                            id="businessId"
+                            name="businessId"
+                        >
+
+
+
+                        <!-- BUSINESS NAME -->
+
+                        <div class="admin-edit-field">
+
+                            <label for="businessName">
+                                Business Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="businessName"
+                                name="businessName"
+                                autocomplete="organization"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- CATEGORY -->
+
+                        <div class="admin-edit-field">
+
+                            <label for="businessCategory">
+                                Category
+                            </label>
+
+                            <select
+                                id="businessCategory"
+                                name="businessCategory"
+                                required
+                            >
+
+                                <option value="">
+                                    Select a category
+                                </option>
+
+                                <option value="Cleaning">
+                                    Cleaning
+                                </option>
+
+                                <option value="Plumbing">
+                                    Plumbing
+                                </option>
+
+                                <option value="Electrical">
+                                    Electrical
+                                </option>
+
+                                <option value="Building & Repairs">
+                                    Building & Repairs
+                                </option>
+
+                                <option value="Gardening">
+                                    Gardening
+                                </option>
+
+                                <option value="Automotive">
+                                    Automotive
+                                </option>
+
+                                <option value="Property">
+                                    Property
+                                </option>
+
+                                <option value="Insurance">
+                                    Insurance
+                                </option>
+
+                                <option value="Beauty & Wellness">
+                                    Beauty & Wellness
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- TWO COLUMN ROW -->
+
+                        <div class="admin-edit-grid">
+
+
+                            <!-- CONTACT NAME -->
+
+                            <div class="admin-edit-field">
+
+                                <label for="contactName">
+                                    Contact Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contactName"
+                                    name="contactName"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="admin-edit-field">
+
+                                <label for="businessPhone">
+                                    Phone
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="businessPhone"
+                                    name="businessPhone"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- TWO COLUMN ROW -->
+
+                        <div class="admin-edit-grid">
+
+
+                            <!-- EMAIL -->
+
+                            <div class="admin-edit-field">
+
+                                <label for="businessEmail">
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="businessEmail"
+                                    name="businessEmail"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- LOCATION -->
+
+                            <div class="admin-edit-field">
+
+                                <label for="businessLocation">
+                                    Location
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="businessLocation"
+                                    name="businessLocation"
+                                    autocomplete="address-level2"
+                                    required
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- LANGUAGES -->
+
+                        <div class="admin-edit-field">
+
+                            <label for="businessLanguages">
+                                Languages
+                            </label>
+
+                            <input
+                                type="text"
+                                id="businessLanguages"
+                                name="businessLanguages"
+                                placeholder="Example: Portuguese, English"
+                            >
+
+                        </div>
+
+
+
+                        <!-- WEBSITE -->
+
+                        <div class="admin-edit-field">
+
+                            <label for="businessWebsite">
+                                Website
+                            </label>
+
+                            <input
+                                type="text"
+                                id="businessWebsite"
+                                name="businessWebsite"
+                                placeholder="https://example.com"
+                                autocomplete="url"
+                            >
+
+                        </div>
+
+
+
+                        <!-- SOCIAL MEDIA -->
+
+                        <div class="admin-edit-field">
+
+                            <label for="businessSocial">
+                                Social Media
+                            </label>
+
+                            <input
+                                type="text"
+                                id="businessSocial"
+                                name="businessSocial"
+                                placeholder="Facebook, Instagram or profile URL"
+                            >
+
+                        </div>
+
+
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="admin-edit-field">
+
+                            <label for="businessDescription">
+                                Business Description
+                            </label>
+
+                            <textarea
+                                id="businessDescription"
+                                name="businessDescription"
+                                rows="6"
+                                placeholder="Describe the business and its services."
+                            ></textarea>
+
+                        </div>
+
+
+
+                        <!-- ADMIN NOTES -->
+
+                        <div class="admin-edit-field">
+
+                            <label for="businessNotes">
+                                Admin Notes
+                            </label>
+
+                            <textarea
+                                id="businessNotes"
+                                name="businessNotes"
+                                rows="5"
+                                placeholder="Private notes for Madeira Helper administration."
+                            ></textarea>
+
+                            <small>
+                                These notes are for your admin records.
+                            </small>
+
+                        </div>
+
+
+
+                        <!-- MESSAGE -->
+
+                        <div
+                            id="businessEditMessage"
+                            class="admin-edit-message"
+                            aria-live="polite"
+                        ></div>
+
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="admin-edit-actions">
+
+                            <button
+                                type="submit"
+                                class="admin-edit-save-button"
+                                id="saveBusinessButton"
+                            >
+                                Save Changes
+                            </button>
+
+
+                            <a
+                                href="admin-businesses.html"
+                                class="admin-edit-cancel-button"
+                                id="cancelEditLink"
+                            >
+                                Cancel
+                            </a>
+
+                        </div>
+
+
+                    </form>
+
+                </section>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ========================================
+         ADMIN SECURITY + EDIT BUSINESS
+    ========================================= -->
+
+    <script>
+
+
+        /*
+        ==========================================
+        CHECK ADMIN SESSION
+        ==========================================
+        */
+
+        async function checkAdminSession() {
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-session",
+                    {
+                        method: "GET",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                if (!response.ok) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return false;
+                }
+
+
+                const result =
+                    await response.json();
+
+
+                if (!result.authenticated) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return false;
+                }
+
+
+                return true;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin session error:",
+                    error
+                );
+
+
+                window.location.replace(
+                    "admin-login.html"
+                );
+
+
+                return false;
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        GET BUSINESS ID
+        ==========================================
+        */
+
+        function getBusinessId() {
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+
+            const id =
+                Number(params.get("id"));
+
+
+            if (
+                !Number.isInteger(id) ||
+                id <= 0
+            ) {
+                return null;
+            }
+
+
+            return id;
+        }
+
+
+
+        /*
+        ==========================================
+        SET STATUS
+        ==========================================
+        */
+
+        function setBusinessStatus(
+            applicationStatus,
+            active
+        ) {
+
+            const status =
+                document.getElementById(
+                    "businessCurrentStatus"
+                );
+
+
+            if (!status) {
+                return;
+            }
+
+
+            if (
+                applicationStatus === "Approved" &&
+                Number(active) === 1
+            ) {
+
+                status.textContent = "Active";
+
+                status.className =
+                    "admin-active-badge";
+
+                return;
+            }
+
+
+            if (
+                applicationStatus === "Approved" &&
+                Number(active) === 0
+            ) {
+
+                status.textContent = "Inactive";
+
+                status.className =
+                    "admin-inactive-badge";
+
+                return;
+            }
+
+
+            status.textContent =
+                applicationStatus || "Unknown";
+
+            status.className =
+                "admin-status-badge";
+        }
+
+
+
+        /*
+        ==========================================
+        SET BACK LINKS
+        ==========================================
+        */
+
+        function setBackLinks(business) {
+
+            let destination =
+                "admin-businesses.html";
+
+
+            if (
+                business.application_status === "Approved" &&
+                Number(business.active) === 0
+            ) {
+                destination =
+                    "admin-inactive-businesses.html";
+            }
+
+
+            const backLink =
+                document.getElementById(
+                    "backToBusinessesLink"
+                );
+
+
+            const cancelLink =
+                document.getElementById(
+                    "cancelEditLink"
+                );
+
+
+            if (backLink) {
+                backLink.href = destination;
+            }
+
+
+            if (cancelLink) {
+                cancelLink.href = destination;
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        FILL FORM
+        ==========================================
+        */
+
+        function fillBusinessForm(business) {
+
+            document.getElementById(
+                "businessId"
+            ).value =
+                business.business_id;
+
+
+            document.getElementById(
+                "businessName"
+            ).value =
+                business.business_name || "";
+
+
+            document.getElementById(
+                "businessCategory"
+            ).value =
+                business.category || "";
+
+
+            document.getElementById(
+                "contactName"
+            ).value =
+                business.contact_name || "";
+
+
+            document.getElementById(
+                "businessPhone"
+            ).value =
+                business.phone || "";
+
+
+            document.getElementById(
+                "businessEmail"
+            ).value =
+                business.email || "";
+
+
+            document.getElementById(
+                "businessLocation"
+            ).value =
+                business.location || "";
+
+
+            document.getElementById(
+                "businessLanguages"
+            ).value =
+                business.languages || "";
+
+
+            document.getElementById(
+                "businessWebsite"
+            ).value =
+                business.website || "";
+
+
+            document.getElementById(
+                "businessSocial"
+            ).value =
+                business.social_media || "";
+
+
+            document.getElementById(
+                "businessDescription"
+            ).value =
+                business.description || "";
+
+
+            document.getElementById(
+                "businessNotes"
+            ).value =
+                business.notes || "";
+
+
+            document.getElementById(
+                "editBusinessHeading"
+            ).textContent =
+                business.business_name ||
+                "Edit business details";
+
+
+            document.getElementById(
+                "businessFormTitle"
+            ).textContent =
+                business.business_name ||
+                "Business information";
+
+
+            setBusinessStatus(
+                business.application_status,
+                business.active
+            );
+
+
+            setBackLinks(business);
+        }
+
+
+
+        /*
+        ==========================================
+        LOAD BUSINESS
+        ==========================================
+        */
+
+        async function loadBusinessDetails() {
+
+            const businessId =
+                getBusinessId();
+
+
+            const statusArea =
+                document.getElementById(
+                    "businessEditStatus"
+                );
+
+
+            const panel =
+                document.getElementById(
+                    "businessEditPanel"
+                );
+
+
+            if (!businessId) {
+
+                statusArea.textContent =
+                    "No valid business was selected.";
+
+                return;
+            }
+
+
+            try {
+
+                const response = await fetch(
+                    `/.netlify/functions/admin-business-details?id=${encodeURIComponent(
+                        businessId
+                    )}`,
+                    {
+                        method: "GET",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return;
+                }
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.message ||
+                        "Unable to load business."
+                    );
+                }
+
+
+                if (!result.business) {
+
+                    throw new Error(
+                        "Business information was not returned."
+                    );
+                }
+
+
+                fillBusinessForm(
+                    result.business
+                );
+
+
+                statusArea.hidden = true;
+
+                panel.hidden = false;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Load business error:",
+                    error
+                );
+
+
+                statusArea.hidden = false;
+
+                statusArea.textContent =
+                    error.message ||
+                    "Unable to load business details.";
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        SAVE BUSINESS
+        ==========================================
+        */
+
+        async function saveBusiness(event) {
+
+            event.preventDefault();
+
+
+            const form =
+                document.getElementById(
+                    "adminEditBusinessForm"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "saveBusinessButton"
+                );
+
+
+            const message =
+                document.getElementById(
+                    "businessEditMessage"
+                );
+
+
+            if (!form.checkValidity()) {
+
+                form.reportValidity();
+
+                return;
+            }
+
+
+            const businessId =
+                Number(
+                    document.getElementById(
+                        "businessId"
+                    ).value
+                );
+
+
+            const payload = {
+
+                businessId: businessId,
+
+                businessName:
+                    document.getElementById(
+                        "businessName"
+                    ).value.trim(),
+
+                category:
+                    document.getElementById(
+                        "businessCategory"
+                    ).value.trim(),
+
+                contactName:
+                    document.getElementById(
+                        "contactName"
+                    ).value.trim(),
+
+                phone:
+                    document.getElementById(
+                        "businessPhone"
+                    ).value.trim(),
+
+                email:
+                    document.getElementById(
+                        "businessEmail"
+                    ).value.trim(),
+
+                location:
+                    document.getElementById(
+                        "businessLocation"
+                    ).value.trim(),
+
+                languages:
+                    document.getElementById(
+                        "businessLanguages"
+                    ).value.trim(),
+
+                website:
+                    document.getElementById(
+                        "businessWebsite"
+                    ).value.trim(),
+
+                socialMedia:
+                    document.getElementById(
+                        "businessSocial"
+                    ).value.trim(),
+
+                description:
+                    document.getElementById(
+                        "businessDescription"
+                    ).value.trim(),
+
+                notes:
+                    document.getElementById(
+                        "businessNotes"
+                    ).value.trim()
+            };
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "Saving...";
+
+
+            message.textContent =
+                "Saving changes...";
+
+            message.className =
+                "admin-edit-message";
+
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-update-business-details",
+                    {
+                        method: "POST",
+
+                        credentials: "same-origin",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify(
+                            payload
+                        )
+                    }
+                );
+
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return;
+                }
+
+
+                const result =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        result.message ||
+                        "Unable to save business."
+                    );
+                }
+
+
+                message.textContent =
+                    "Business details saved successfully.";
+
+                message.className =
+                    "admin-edit-message success";
+
+
+            } catch (error) {
+
+                console.error(
+                    "Save business error:",
+                    error
+                );
+
+
+                message.textContent =
+                    error.message ||
+                    "Unable to save changes.";
+
+                message.className =
+                    "admin-edit-message error";
+
+
+            } finally {
+
+                button.disabled = false;
+
+                button.textContent =
+                    "Save Changes";
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        LOG OUT
+        ==========================================
+        */
+
+        async function logoutAdmin() {
+
+            const logoutButton =
+                document.getElementById(
+                    "adminLogoutButton"
+                );
+
+
+            if (!logoutButton) {
+                return;
+            }
+
+
+            logoutButton.disabled = true;
+
+            logoutButton.textContent =
+                "Logging out...";
+
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-logout",
+                    {
+                        method: "POST",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to log out."
+                    );
+                }
+
+
+                window.location.replace(
+                    "admin-login.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin logout error:",
+                    error
+                );
+
+
+                logoutButton.disabled =
+                    false;
+
+
+                logoutButton.textContent =
+                    "Log out";
+
+
+                window.alert(
+                    "Unable to log out. Please try again."
+                );
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        START PAGE
+        ==========================================
+        */
+
+        async function startEditBusinessPage() {
+
+            const authenticated =
+                await checkAdminSession();
+
+
+            if (!authenticated) {
+                return;
+            }
+
+
+            const form =
+                document.getElementById(
+                    "adminEditBusinessForm"
+                );
+
+
+            if (form) {
+
+                form.addEventListener(
+                    "submit",
+                    saveBusiness
+                );
+            }
+
+
+            const logoutButton =
+                document.getElementById(
+                    "adminLogoutButton"
+                );
+
+
+            if (logoutButton) {
+
+                logoutButton.addEventListener(
+                    "click",
+                    logoutAdmin
+                );
+            }
+
+
+            await loadBusinessDetails();
+        }
+
+
+        startEditBusinessPage();
+
+
+    </script>
+
+
+</body>
+
+</html>

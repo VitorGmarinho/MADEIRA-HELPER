@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Madeira Helper active businesses administration."
+    >
+
+    <title>Active Businesses | Madeira Helper</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="admin-page">
+
+    <div class="admin-layout">
+
+
+        <!-- ========================================
+             SIDEBAR
+        ========================================= -->
+
+        <aside class="admin-sidebar">
+
+            <a href="index.html" class="admin-logo">
+
+                <img
+                    src="images/madeira-helper-logo.png"
+                    alt="Madeira Helper"
+                >
+
+            </a>
+
+
+            <div class="admin-sidebar-label">
+                ADMINISTRATION
+            </div>
+
+
+            <nav class="admin-navigation">
+
+                <a
+                    href="admin.html"
+                    class="admin-nav-item"
+                >
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="admin-requests.html"
+                    class="admin-nav-item"
+                >
+                    <span>◎</span>
+                    Customer Requests
+                </a>
+
+
+                <a
+                    href="admin-business-applications.html"
+                    class="admin-nav-item"
+                >
+                    <span>▦</span>
+                    Business Applications
+                </a>
+
+
+                <a
+                    href="admin-businesses.html"
+                    class="admin-nav-item active"
+                >
+                    <span>✓</span>
+                    Active Businesses
+                </a>
+
+
+                <a
+                    href="admin-inactive-businesses.html"
+                    class="admin-nav-item"
+                >
+                    <span>○</span>
+                    Inactive Businesses
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <button
+                    class="admin-logout-button"
+                    id="adminLogoutButton"
+                    type="button"
+                >
+                    Log out
+                </button>
+
+                <a href="index.html">
+                    ← Back to website
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ========================================
+             MAIN AREA
+        ========================================= -->
+
+        <main class="admin-main">
+
+
+            <!-- TOP BAR -->
+
+            <header class="admin-topbar">
+
+                <div>
+
+                    <span class="admin-eyebrow">
+                        MADEIRA HELPER
+                    </span>
+
+                    <h1>
+                        Active Businesses
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        VM
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Vitor Marinho
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ========================================
+                 PAGE CONTENT
+            ========================================= -->
+
+            <section class="admin-content">
+
+
+                <!-- PAGE INTRO -->
+
+                <div class="admin-welcome">
+
+                    <div>
+
+                        <span class="admin-section-label">
+                            BUSINESS NETWORK
+                        </span>
+
+                        <h2>
+                            Active businesses
+                        </h2>
+
+                        <p>
+                            View and manage the businesses currently
+                            active in the Madeira Helper network.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     BUSINESSES PANEL
+                ========================================= -->
+
+                <section class="admin-panel">
+
+
+                    <div class="admin-panel-header">
+
+                        <div>
+
+                            <span class="admin-section-label">
+                                APPROVED BUSINESSES
+                            </span>
+
+                            <h2>
+                                Business network
+                            </h2>
+
+                        </div>
+
+
+                        <div class="admin-request-count">
+
+                            <strong id="businessCount">
+                                —
+                            </strong>
+
+                            <span>
+                                active
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BUSINESSES -->
+
+                    <div id="businessesContainer">
+
+                        <div class="admin-empty-state">
+
+                            <div class="admin-empty-icon">
+                                MH
+                            </div>
+
+                            <h3>
+                                Loading businesses...
+                            </h3>
+
+                            <p>
+                                Please wait while your active
+                                businesses load.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ========================================
+         ADMIN SECURITY + ACTIVE BUSINESSES
+    ========================================= -->
+
+    <script>
+
+
+        /*
+        ==========================================
+        CHECK ADMIN SESSION
+        ==========================================
+        */
+
+        async function checkAdminSession() {
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-session",
+                    {
+                        method: "GET",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                if (!response.ok) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return false;
+                }
+
+
+                const result =
+                    await response.json();
+
+
+                if (!result.authenticated) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return false;
+                }
+
+
+                return true;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin session error:",
+                    error
+                );
+
+
+                window.location.replace(
+                    "admin-login.html"
+                );
+
+
+                return false;
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        SAFE TEXT
+        ==========================================
+        */
+
+        function escapeHTML(value) {
+
+            const div =
+                document.createElement("div");
+
+
+            div.textContent =
+                value === null ||
+                value === undefined
+                    ? ""
+                    : String(value);
+
+
+            return div.innerHTML;
+        }
+
+
+
+        /*
+        ==========================================
+        FORMAT DATE
+        ==========================================
+        */
+
+        function formatDate(dateValue) {
+
+            if (!dateValue) {
+                return "—";
+            }
+
+
+            const date =
+                new Date(dateValue);
+
+
+            if (Number.isNaN(date.getTime())) {
+                return "—";
+            }
+
+
+            return date.toLocaleDateString(
+                "en-GB",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+        }
+
+
+
+        /*
+        ==========================================
+        SAFE WEBSITE URL
+        ==========================================
+        */
+
+        function safeWebsiteURL(value) {
+
+            if (!value) {
+                return "";
+            }
+
+
+            let url =
+                String(value).trim();
+
+
+            if (!url) {
+                return "";
+            }
+
+
+            if (
+                !url.startsWith("http://") &&
+                !url.startsWith("https://")
+            ) {
+
+                url =
+                    "https://" + url;
+            }
+
+
+            try {
+
+                const parsedURL =
+                    new URL(url);
+
+
+                if (
+                    parsedURL.protocol !== "http:" &&
+                    parsedURL.protocol !== "https:"
+                ) {
+
+                    return "";
+                }
+
+
+                return parsedURL.href;
+
+
+            } catch (error) {
+
+                return "";
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        SAFE EMAIL LINK
+        ==========================================
+        */
+
+        function safeEmail(value) {
+
+            if (!value) {
+                return "";
+            }
+
+
+            const email =
+                String(value).trim();
+
+
+            if (
+                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+            ) {
+
+                return "";
+            }
+
+
+            return email;
+        }
+
+
+
+        /*
+        ==========================================
+        SAFE PHONE LINK
+        ==========================================
+        */
+
+        function safePhone(value) {
+
+            if (!value) {
+                return "";
+            }
+
+
+            return String(value)
+                .replace(/[^0-9+]/g, "");
+        }
+
+
+
+        /*
+        ==========================================
+        DISPLAY ACTIVE BUSINESSES
+        ==========================================
+        */
+
+        function displayBusinesses(businesses) {
+
+            const container =
+                document.getElementById(
+                    "businessesContainer"
+                );
+
+
+            const count =
+                document.getElementById(
+                    "businessCount"
+                );
+
+
+            if (
+                !Array.isArray(businesses) ||
+                businesses.length === 0
+            ) {
+
+                count.textContent = "0";
+
+
+                container.innerHTML = `
+
+                    <div class="admin-empty-state">
+
+                        <div class="admin-empty-icon">
+                            MH
+                        </div>
+
+                        <h3>
+                            No active businesses
+                        </h3>
+
+                        <p>
+                            Businesses you approve will
+                            appear here.
+                        </p>
+
+                    </div>
+                `;
+
+
+                return;
+            }
+
+
+            count.textContent =
+                businesses.length;
+
+
+            let cards = "";
+
+
+            businesses.forEach((business) => {
+
+
+                const businessId =
+                    Number(
+                        business.business_id
+                    );
+
+
+                const businessName =
+                    business.business_name ||
+                    "Business";
+
+
+                const category =
+                    business.category ||
+                    "—";
+
+
+                const contactName =
+                    business.contact_name ||
+                    "—";
+
+
+                const phone =
+                    business.phone ||
+                    "—";
+
+
+                const email =
+                    business.email ||
+                    "—";
+
+
+                const location =
+                    business.location ||
+                    "—";
+
+
+                const languages =
+                    business.languages ||
+                    "—";
+
+
+                const description =
+                    business.description ||
+                    "No description provided.";
+
+
+                const website =
+                    safeWebsiteURL(
+                        business.website
+                    );
+
+
+                const social =
+                    safeWebsiteURL(
+                        business.social_media
+                    );
+
+
+                const emailLink =
+                    safeEmail(email);
+
+
+                const phoneLink =
+                    safePhone(phone);
+
+
+
+                cards += `
+
+                    <article
+                        class="admin-business-application admin-active-business"
+                        data-business-id="${businessId}"
+                    >
+
+
+                        <!-- BUSINESS HEADER -->
+
+                        <div class="admin-business-application-header">
+
+                            <div>
+
+                                <span class="admin-business-reference">
+
+                                    MHB-${String(
+                                        businessId
+                                    ).padStart(6, "0")}
+
+                                </span>
+
+
+                                <h3>
+
+                                    ${escapeHTML(
+                                        businessName
+                                    )}
+
+                                </h3>
+
+
+                                <span class="admin-business-category">
+
+                                    ${escapeHTML(
+                                        category
+                                    )}
+
+                                </span>
+
+                            </div>
+
+
+                            <span class="admin-active-badge">
+                                Active
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- BUSINESS DETAILS -->
+
+                        <div class="admin-business-details">
+
+
+                            <div class="admin-business-detail">
+
+                                <span>
+                                    Contact
+                                </span>
+
+                                <strong>
+
+                                    ${escapeHTML(
+                                        contactName
+                                    )}
+
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="admin-business-detail">
+
+                                <span>
+                                    Location
+                                </span>
+
+                                <strong>
+
+                                    ${escapeHTML(
+                                        location
+                                    )}
+
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="admin-business-detail">
+
+                                <span>
+                                    Languages
+                                </span>
+
+                                <strong>
+
+                                    ${escapeHTML(
+                                        languages
+                                    )}
+
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="admin-business-detail">
+
+                                <span>
+                                    Joined
+                                </span>
+
+                                <strong>
+
+                                    ${formatDate(
+                                        business.created_at
+                                    )}
+
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- CONTACT -->
+
+                        <div class="admin-business-contact">
+
+
+                            <div>
+
+                                <span>
+                                    Email
+                                </span>
+
+                                ${
+                                    emailLink
+                                        ? `
+                                            <a
+                                                href="mailto:${escapeHTML(emailLink)}"
+                                            >
+                                                ${escapeHTML(email)}
+                                            </a>
+                                        `
+                                        : `
+                                            <strong>
+                                                ${escapeHTML(email)}
+                                            </strong>
+                                        `
+                                }
+
+                            </div>
+
+
+
+                            <div>
+
+                                <span>
+                                    Phone
+                                </span>
+
+                                ${
+                                    phoneLink
+                                        ? `
+                                            <a
+                                                href="tel:${escapeHTML(phoneLink)}"
+                                            >
+                                                ${escapeHTML(phone)}
+                                            </a>
+                                        `
+                                        : `
+                                            <strong>
+                                                ${escapeHTML(phone)}
+                                            </strong>
+                                        `
+                                }
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- DESCRIPTION -->
+
+                        <div class="admin-business-description">
+
+                            <span>
+                                About the business
+                            </span>
+
+                            <p>
+
+                                ${escapeHTML(
+                                    description
+                                )}
+
+                            </p>
+
+                        </div>
+
+
+
+                        <!-- LINKS -->
+
+                        ${
+                            website || social
+                                ? `
+
+                            <div class="admin-business-links">
+
+
+                                ${
+                                    website
+                                        ? `
+
+                                    <a
+                                        href="${escapeHTML(
+                                            website
+                                        )}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Visit website ↗
+                                    </a>
+
+                                `
+                                        : ""
+                                }
+
+
+                                ${
+                                    social
+                                        ? `
+
+                                    <a
+                                        href="${escapeHTML(
+                                            social
+                                        )}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Social media ↗
+                                    </a>
+
+                                `
+                                        : ""
+                                }
+
+
+                            </div>
+
+                        `
+                                : ""
+                        }
+
+
+
+                        <!-- BUSINESS MANAGEMENT -->
+
+                        <div class="admin-business-actions">
+
+                            <div
+                                class="admin-business-action-message"
+                                data-action-message
+                            ></div>
+
+
+                            <div class="admin-business-action-buttons">
+
+
+                                <!-- EDIT BUSINESS -->
+
+                                <a
+                                    href="admin-edit-business.html?id=${businessId}"
+                                    class="admin-business-edit-button"
+                                >
+                                    Edit business
+                                </a>
+
+
+                                <!-- DEACTIVATE BUSINESS -->
+
+                                <button
+                                    class="admin-business-deactivate-button"
+                                    type="button"
+                                    data-deactivate-business="${businessId}"
+                                    data-business-name="${escapeHTML(
+                                        businessName
+                                    )}"
+                                >
+                                    Deactivate business
+                                </button>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </article>
+                `;
+            });
+
+
+
+            container.innerHTML = `
+
+                <div class="admin-business-applications-list">
+                    ${cards}
+                </div>
+            `;
+
+
+
+            /*
+            ==========================================
+            CONNECT DEACTIVATE BUTTONS
+            ==========================================
+            */
+
+            const deactivateButtons =
+                container.querySelectorAll(
+                    "[data-deactivate-business]"
+                );
+
+
+            deactivateButtons.forEach(
+                (button) => {
+
+                    button.addEventListener(
+                        "click",
+                        handleDeactivateBusiness
+                    );
+                }
+            );
+        }
+
+
+
+        /*
+        ==========================================
+        DEACTIVATE BUSINESS
+        ==========================================
+        */
+
+        async function handleDeactivateBusiness(event) {
+
+            const button =
+                event.currentTarget;
+
+
+            const businessId =
+                Number(
+                    button.dataset.deactivateBusiness
+                );
+
+
+            const businessName =
+                button.dataset.businessName ||
+                "this business";
+
+
+            const card =
+                button.closest(
+                    ".admin-business-application"
+                );
+
+
+            if (!card) {
+                return;
+            }
+
+
+            const message =
+                card.querySelector(
+                    "[data-action-message]"
+                );
+
+
+            /*
+            CONFIRM BEFORE CHANGING DATABASE
+            */
+
+            const confirmed =
+                window.confirm(
+                    `Deactivate ${businessName}?\n\n` +
+                    "The business will remain in the database, " +
+                    "but it will no longer be marked as active."
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+
+            /*
+            SHOW SAVING STATE
+            */
+
+            button.disabled = true;
+
+
+            if (message) {
+
+                message.textContent =
+                    "Deactivating...";
+
+                message.className =
+                    "admin-business-action-message saving";
+            }
+
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/.netlify/functions/admin-deactivate-business",
+                        {
+                            method: "POST",
+
+                            credentials:
+                                "same-origin",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify({
+                                    businessId:
+                                        businessId
+                                })
+                        }
+                    );
+
+
+
+                /*
+                SESSION EXPIRED
+                */
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return;
+                }
+
+
+
+                const data =
+                    await response.json();
+
+
+
+                if (
+                    !response.ok ||
+                    !data.success
+                ) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to deactivate business."
+                    );
+                }
+
+
+
+                /*
+                SUCCESS MESSAGE
+                */
+
+                if (message) {
+
+                    message.textContent =
+                        "Business deactivated.";
+
+                    message.className =
+                        "admin-business-action-message success";
+                }
+
+
+
+                /*
+                REMOVE CARD FROM ACTIVE LIST
+                */
+
+                window.setTimeout(
+                    () => {
+
+                        card.remove();
+
+
+                        const remaining =
+                            document.querySelectorAll(
+                                ".admin-active-business"
+                            ).length;
+
+
+                        document.getElementById(
+                            "businessCount"
+                        ).textContent =
+                            remaining;
+
+
+
+                        /*
+                        IF NO ACTIVE BUSINESSES REMAIN
+                        */
+
+                        if (remaining === 0) {
+
+                            document.getElementById(
+                                "businessesContainer"
+                            ).innerHTML = `
+
+                                <div class="admin-empty-state">
+
+                                    <div class="admin-empty-icon">
+                                        MH
+                                    </div>
+
+                                    <h3>
+                                        No active businesses
+                                    </h3>
+
+                                    <p>
+                                        Businesses you approve will
+                                        appear here.
+                                    </p>
+
+                                </div>
+                            `;
+                        }
+
+                    },
+
+                    900
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Deactivate business error:",
+                    error
+                );
+
+
+                button.disabled =
+                    false;
+
+
+                if (message) {
+
+                    message.textContent =
+                        error.message ||
+                        "Business was not deactivated.";
+
+                    message.className =
+                        "admin-business-action-message error";
+                }
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        LOAD ACTIVE BUSINESSES
+        ==========================================
+        */
+
+        async function loadBusinesses() {
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-businesses",
+                    {
+                        method: "GET",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                /*
+                SESSION EXPIRED
+                */
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to load active businesses."
+                    );
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to load active businesses."
+                    );
+                }
+
+
+                displayBusinesses(
+                    data.businesses
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Active businesses error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "businessCount"
+                ).textContent = "—";
+
+
+                document.getElementById(
+                    "businessesContainer"
+                ).innerHTML = `
+
+                    <div class="admin-empty-state">
+
+                        <div class="admin-empty-icon">
+                            !
+                        </div>
+
+                        <h3>
+                            Unable to load businesses
+                        </h3>
+
+                        <p>
+                            The active businesses could not
+                            be loaded from the database.
+                        </p>
+
+                    </div>
+                `;
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        LOG OUT
+        ==========================================
+        */
+
+        async function logoutAdmin() {
+
+            const logoutButton =
+                document.getElementById(
+                    "adminLogoutButton"
+                );
+
+
+            if (!logoutButton) {
+                return;
+            }
+
+
+            logoutButton.disabled = true;
+
+            logoutButton.textContent =
+                "Logging out...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/.netlify/functions/admin-logout",
+                        {
+                            method: "POST",
+                            credentials: "same-origin"
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to log out."
+                    );
+                }
+
+
+                window.location.replace(
+                    "admin-login.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin logout error:",
+                    error
+                );
+
+
+                logoutButton.disabled =
+                    false;
+
+
+                logoutButton.textContent =
+                    "Log out";
+
+
+                window.alert(
+                    "Unable to log out. Please try again."
+                );
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        START PAGE
+        ==========================================
+        */
+
+        async function startBusinessesPage() {
+
+            const authenticated =
+                await checkAdminSession();
+
+
+            if (!authenticated) {
+                return;
+            }
+
+
+            /*
+            CONNECT LOGOUT BUTTON
+            */
+
+            const logoutButton =
+                document.getElementById(
+                    "adminLogoutButton"
+                );
+
+
+            if (logoutButton) {
+
+                logoutButton.addEventListener(
+                    "click",
+                    logoutAdmin
+                );
+            }
+
+
+            /*
+            LOAD ACTIVE BUSINESSES
+            */
+
+            await loadBusinesses();
+        }
+
+
+        startBusinessesPage();
+
+
+    </script>
+
+
+</body>
+
+</html>

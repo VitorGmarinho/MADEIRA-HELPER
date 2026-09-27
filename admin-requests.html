@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Madeira Helper customer requests administration."
+    >
+
+    <title>Customer Requests | Madeira Helper</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="admin-page">
+
+    <div class="admin-layout">
+
+
+        <!-- ========================================
+             SIDEBAR
+        ========================================= -->
+
+        <aside class="admin-sidebar">
+
+            <a href="index.html" class="admin-logo">
+
+                <img
+                    src="images/madeira-helper-logo.png"
+                    alt="Madeira Helper"
+                >
+
+            </a>
+
+
+            <div class="admin-sidebar-label">
+                ADMINISTRATION
+            </div>
+
+
+            <nav class="admin-navigation">
+
+                <a
+                    href="admin.html"
+                    class="admin-nav-item"
+                >
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="admin-requests.html"
+                    class="admin-nav-item active"
+                >
+                    <span>◎</span>
+                    Customer Requests
+                </a>
+
+
+                <a
+                    href="admin-business-applications.html"
+                    class="admin-nav-item"
+                >
+                    <span>▦</span>
+                    Business Applications
+                </a>
+
+
+                <a
+                    href="admin-businesses.html"
+                    class="admin-nav-item"
+                >
+                    <span>✓</span>
+                    Active Businesses
+                </a>
+
+
+                <a
+                    href="admin-inactive-businesses.html"
+                    class="admin-nav-item"
+                >
+                    <span>○</span>
+                    Inactive Businesses
+                </a>
+
+            </nav>
+
+
+            <div class="admin-sidebar-bottom">
+
+                <button
+                    class="admin-logout-button"
+                    id="adminLogoutButton"
+                    type="button"
+                >
+                    Log out
+                </button>
+
+
+                <a href="index.html">
+                    ← Back to website
+                </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ========================================
+             MAIN AREA
+        ========================================= -->
+
+        <main class="admin-main">
+
+
+            <!-- TOP BAR -->
+
+            <header class="admin-topbar">
+
+                <div>
+
+                    <span class="admin-eyebrow">
+                        MADEIRA HELPER
+                    </span>
+
+                    <h1>
+                        Customer Requests
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        VM
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Vitor Marinho
+                        </strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ========================================
+                 PAGE CONTENT
+            ========================================= -->
+
+            <section class="admin-content">
+
+
+                <!-- PAGE INTRO -->
+
+                <div class="admin-welcome">
+
+                    <div>
+
+                        <span class="admin-section-label">
+                            REQUEST MANAGEMENT
+                        </span>
+
+                        <h2>
+                            Customer requests
+                        </h2>
+
+                        <p>
+                            View customer requests and update their
+                            progress from one place.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     REQUESTS PANEL
+                ========================================= -->
+
+                <section class="admin-panel">
+
+
+                    <div class="admin-panel-header">
+
+                        <div>
+
+                            <span class="admin-section-label">
+                                ALL REQUESTS
+                            </span>
+
+                            <h2>
+                                Requests
+                            </h2>
+
+                        </div>
+
+
+                        <div class="admin-request-count">
+
+                            <strong id="requestCount">
+                                —
+                            </strong>
+
+                            <span>
+                                total
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- REQUEST TABLE -->
+
+                    <div id="requestsContainer">
+
+                        <div class="admin-empty-state">
+
+                            <div class="admin-empty-icon">
+                                MH
+                            </div>
+
+                            <h3>
+                                Loading requests...
+                            </h3>
+
+                            <p>
+                                Please wait while your requests load.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- ========================================
+         ADMIN SECURITY + REQUEST MANAGEMENT
+    ========================================= -->
+
+    <script>
+
+
+        /*
+        ==========================================
+        CHECK ADMIN SESSION
+        ==========================================
+        */
+
+        async function checkAdminSession() {
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-session",
+                    {
+                        method: "GET",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                if (!response.ok) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return false;
+                }
+
+
+                const result =
+                    await response.json();
+
+
+                if (!result.authenticated) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return false;
+                }
+
+
+                return true;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin session error:",
+                    error
+                );
+
+
+                window.location.replace(
+                    "admin-login.html"
+                );
+
+
+                return false;
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        SAFE TEXT
+        ==========================================
+        */
+
+        function escapeHTML(value) {
+
+            const div =
+                document.createElement("div");
+
+
+            div.textContent =
+                value === null ||
+                value === undefined
+                    ? ""
+                    : String(value);
+
+
+            return div.innerHTML;
+        }
+
+
+
+        /*
+        ==========================================
+        FORMAT DATE
+        ==========================================
+        */
+
+        function formatDate(dateValue) {
+
+            if (!dateValue) {
+                return "—";
+            }
+
+
+            const date =
+                new Date(dateValue);
+
+
+            if (Number.isNaN(date.getTime())) {
+                return "—";
+            }
+
+
+            return date.toLocaleDateString(
+                "en-GB",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+        }
+
+
+
+        /*
+        ==========================================
+        FORMAT REQUEST REFERENCE
+        ==========================================
+        */
+
+        function formatReference(requestId) {
+
+            return (
+                "MH-" +
+                String(requestId).padStart(6, "0")
+            );
+        }
+
+
+
+        /*
+        ==========================================
+        CREATE STATUS OPTIONS
+        ==========================================
+        */
+
+        function createStatusOptions(currentStatus) {
+
+            const statuses = [
+                "New",
+                "In Progress",
+                "Completed"
+            ];
+
+
+            return statuses
+                .map((status) => {
+
+                    const selected =
+                        status === currentStatus
+                            ? "selected"
+                            : "";
+
+
+                    return `
+                        <option
+                            value="${status}"
+                            ${selected}
+                        >
+                            ${status}
+                        </option>
+                    `;
+                })
+                .join("");
+        }
+
+
+
+        /*
+        ==========================================
+        DISPLAY REQUESTS
+        ==========================================
+        */
+
+        function displayRequests(requests) {
+
+            const container =
+                document.getElementById(
+                    "requestsContainer"
+                );
+
+
+            const requestCount =
+                document.getElementById(
+                    "requestCount"
+                );
+
+
+            if (
+                !Array.isArray(requests) ||
+                requests.length === 0
+            ) {
+
+                requestCount.textContent = "0";
+
+
+                container.innerHTML = `
+
+                    <div class="admin-empty-state">
+
+                        <div class="admin-empty-icon">
+                            MH
+                        </div>
+
+                        <h3>
+                            No customer requests
+                        </h3>
+
+                        <p>
+                            New requests submitted through
+                            Madeira Helper will appear here.
+                        </p>
+
+                    </div>
+                `;
+
+
+                return;
+            }
+
+
+            requestCount.textContent =
+                requests.length;
+
+
+            let rows = "";
+
+
+            requests.forEach((request) => {
+
+
+                const customerName =
+                    `${request.first_name || ""} ${request.last_name || ""}`
+                        .trim() || "Customer";
+
+
+                const email =
+                    request.email || "—";
+
+
+                const phone =
+                    request.phone || "—";
+
+
+                const language =
+                    request.preferred_language || "—";
+
+
+                const description =
+                    request.description || "—";
+
+
+                const status =
+                    request.status || "New";
+
+
+                rows += `
+
+                    <tr>
+
+
+                        <!-- REFERENCE -->
+
+                        <td>
+
+                            <strong>
+                                ${escapeHTML(
+                                    formatReference(
+                                        request.request_id
+                                    )
+                                )}
+                            </strong>
+
+                        </td>
+
+
+
+                        <!-- CUSTOMER -->
+
+                        <td>
+
+                            <div class="admin-customer-cell">
+
+                                <strong>
+                                    ${escapeHTML(customerName)}
+                                </strong>
+
+                                <span>
+                                    ${escapeHTML(language)}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- CONTACT -->
+
+                        <td>
+
+                            <div class="admin-contact-cell">
+
+                                <a
+                                    href="mailto:${escapeHTML(email)}"
+                                >
+                                    ${escapeHTML(email)}
+                                </a>
+
+
+                                <a
+                                    href="tel:${escapeHTML(phone)}"
+                                >
+                                    ${escapeHTML(phone)}
+                                </a>
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- SERVICE -->
+
+                        <td>
+
+                            ${escapeHTML(
+                                request.service_category
+                            )}
+
+                        </td>
+
+
+
+                        <!-- LOCATION -->
+
+                        <td>
+
+                            ${escapeHTML(
+                                request.location
+                            )}
+
+                        </td>
+
+
+
+                        <!-- DESCRIPTION -->
+
+                        <td>
+
+                            <div
+                                class="admin-description-cell"
+                                title="${escapeHTML(description)}"
+                            >
+                                ${escapeHTML(description)}
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <div class="admin-status-control">
+
+                                <select
+                                    class="admin-status-select"
+                                    data-request-id="${Number(
+                                        request.request_id
+                                    )}"
+                                    data-current-status="${escapeHTML(
+                                        status
+                                    )}"
+                                >
+
+                                    ${createStatusOptions(status)}
+
+                                </select>
+
+
+                                <span
+                                    class="admin-status-message"
+                                    id="statusMessage-${Number(
+                                        request.request_id
+                                    )}"
+                                ></span>
+
+                            </div>
+
+                        </td>
+
+
+
+                        <!-- DATE -->
+
+                        <td>
+
+                            ${formatDate(
+                                request.created_at
+                            )}
+
+                        </td>
+
+
+                    </tr>
+                `;
+            });
+
+
+
+            container.innerHTML = `
+
+                <div class="admin-table-wrapper">
+
+                    <table
+                        class="admin-table admin-requests-table"
+                    >
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Reference
+                                </th>
+
+                                <th>
+                                    Customer
+                                </th>
+
+                                <th>
+                                    Contact
+                                </th>
+
+                                <th>
+                                    Service
+                                </th>
+
+                                <th>
+                                    Location
+                                </th>
+
+                                <th>
+                                    Request
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+                            ${rows}
+                        </tbody>
+
+                    </table>
+
+                </div>
+            `;
+
+
+            /*
+            Add change events to every
+            status dropdown.
+            */
+
+            document
+                .querySelectorAll(
+                    ".admin-status-select"
+                )
+                .forEach((select) => {
+
+                    select.addEventListener(
+                        "change",
+                        handleStatusChange
+                    );
+                });
+        }
+
+
+
+        /*
+        ==========================================
+        UPDATE REQUEST STATUS
+        ==========================================
+        */
+
+        async function handleStatusChange(event) {
+
+            const select =
+                event.target;
+
+
+            const requestId =
+                Number(
+                    select.dataset.requestId
+                );
+
+
+            const previousStatus =
+                select.dataset.currentStatus;
+
+
+            const newStatus =
+                select.value;
+
+
+            const message =
+                document.getElementById(
+                    `statusMessage-${requestId}`
+                );
+
+
+            /*
+            Nothing changed.
+            */
+
+            if (newStatus === previousStatus) {
+                return;
+            }
+
+
+            /*
+            Temporarily disable dropdown
+            while saving.
+            */
+
+            select.disabled = true;
+
+
+            message.textContent =
+                "Saving...";
+
+
+            message.className =
+                "admin-status-message saving";
+
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-update-request",
+                    {
+                        method: "POST",
+
+                        credentials: "same-origin",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            requestId: requestId,
+                            status: newStatus
+                        })
+                    }
+                );
+
+
+
+                /*
+                Session expired.
+                */
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return;
+                }
+
+
+
+                const data =
+                    await response.json();
+
+
+
+                if (
+                    !response.ok ||
+                    !data.success
+                ) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to update request."
+                    );
+                }
+
+
+
+                /*
+                Update saved status.
+                */
+
+                select.dataset.currentStatus =
+                    newStatus;
+
+
+                message.textContent =
+                    "Saved";
+
+
+                message.className =
+                    "admin-status-message success";
+
+
+                /*
+                Remove Saved message
+                after a short delay.
+                */
+
+                setTimeout(() => {
+
+                    message.textContent = "";
+
+                }, 2000);
+
+
+
+            } catch (error) {
+
+                console.error(
+                    "Request status update error:",
+                    error
+                );
+
+
+                /*
+                Put dropdown back to
+                previous value if saving failed.
+                */
+
+                select.value =
+                    previousStatus;
+
+
+                message.textContent =
+                    "Not saved";
+
+
+                message.className =
+                    "admin-status-message error";
+
+
+            } finally {
+
+                select.disabled = false;
+
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        LOAD CUSTOMER REQUESTS
+        ==========================================
+        */
+
+        async function loadRequests() {
+
+            try {
+
+                const response = await fetch(
+                    "/.netlify/functions/admin-requests",
+                    {
+                        method: "GET",
+                        credentials: "same-origin"
+                    }
+                );
+
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "admin-login.html"
+                    );
+
+                    return;
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to load requests."
+                    );
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to load requests."
+                    );
+                }
+
+
+                displayRequests(
+                    data.requests
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Customer requests error:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "requestCount"
+                ).textContent = "—";
+
+
+                document.getElementById(
+                    "requestsContainer"
+                ).innerHTML = `
+
+                    <div class="admin-empty-state">
+
+                        <div class="admin-empty-icon">
+                            !
+                        </div>
+
+                        <h3>
+                            Unable to load requests
+                        </h3>
+
+                        <p>
+                            The customer requests could not
+                            be loaded from the database.
+                        </p>
+
+                    </div>
+                `;
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        LOG OUT
+        ==========================================
+        */
+
+        async function logoutAdmin() {
+
+            const logoutButton =
+                document.getElementById(
+                    "adminLogoutButton"
+                );
+
+
+            if (!logoutButton) {
+                return;
+            }
+
+
+            logoutButton.disabled = true;
+
+            logoutButton.textContent =
+                "Logging out...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/.netlify/functions/admin-logout",
+                        {
+                            method: "POST",
+                            credentials: "same-origin"
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to log out."
+                    );
+                }
+
+
+                window.location.replace(
+                    "admin-login.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin logout error:",
+                    error
+                );
+
+
+                logoutButton.disabled =
+                    false;
+
+
+                logoutButton.textContent =
+                    "Log out";
+
+
+                window.alert(
+                    "Unable to log out. Please try again."
+                );
+            }
+        }
+
+
+
+        /*
+        ==========================================
+        START REQUESTS PAGE
+        ==========================================
+        */
+
+        async function startRequestsPage() {
+
+            const authenticated =
+                await checkAdminSession();
+
+
+            if (!authenticated) {
+                return;
+            }
+
+
+            /*
+            Connect logout button.
+            */
+
+            const logoutButton =
+                document.getElementById(
+                    "adminLogoutButton"
+                );
+
+
+            if (logoutButton) {
+
+                logoutButton.addEventListener(
+                    "click",
+                    logoutAdmin
+                );
+            }
+
+
+            /*
+            Load customer requests.
+            */
+
+            await loadRequests();
+        }
+
+
+        startRequestsPage();
+
+
+    </script>
+
+
+</body>
+
+</html>
