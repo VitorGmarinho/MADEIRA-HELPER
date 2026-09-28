@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
 
 <head>
 
@@ -12,12 +12,12 @@
 
     <meta
         name="description"
-        content="Madeira Helper - Everything Madeira and Porto Santo has to offer, all in one place. Discover local businesses, restaurants, activities, accommodation, services and more."
+        content="Madeira Helper - A sua ligação local na Madeira e no Porto Santo. Descubra empresas, serviços, restaurantes, atividades, alojamento e muito mais."
     >
 
     <meta
         name="keywords"
-        content="Madeira Helper, Madeira, Porto Santo, Madeira restaurants, Madeira activities, Madeira hotels, Madeira services, Madeira businesses, things to do Madeira"
+        content="Madeira Helper, serviços Madeira, empresas Madeira, restaurantes Madeira, atividades Madeira, alojamento Madeira, Porto Santo"
     >
 
     <meta
@@ -26,7 +26,7 @@
     >
 
     <title>
-        Madeira Helper | Everything Madeira & Porto Santo
+        Madeira Helper | Madeira e Porto Santo Mais Simples
     </title>
 
 
@@ -53,7 +53,7 @@
 
     <link
         rel="stylesheet"
-        href="css/style.css"
+        href="../css/style.css"
     >
 
 
@@ -65,13 +65,7 @@
     >
 
 
-    <!-- HOMEPAGE EXTRA STYLES -->
-
     <style>
-
-        /* =====================================================
-           FOOTER SOCIAL ICONS
-        ===================================================== */
 
         .footer-socials {
             display: flex;
@@ -92,7 +86,9 @@
 
             background: rgba(255, 255, 255, 0.1);
 
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.18);
 
             color: #ffffff;
 
@@ -111,60 +107,49 @@
 
             transform: translateY(-3px);
 
-            background: rgba(255, 255, 255, 0.18);
+            background:
+                rgba(255, 255, 255, 0.18);
 
-            border-color: rgba(255, 255, 255, 0.35);
+            border-color:
+                rgba(255, 255, 255, 0.35);
         }
 
         .footer-socials a:focus-visible {
 
-            outline: 3px solid #ffd45c;
+            outline:
+                3px solid #ffd45c;
 
             outline-offset: 3px;
         }
 
 
-        /* =====================================================
-           FOXGLOVE TRANSPARENT OFFICIAL LOGO
-        ===================================================== */
+        /* LANGUAGE SWITCHER */
 
-        .mh-foxglove-brand {
+        .language-switcher {
+            display: inline-flex;
+            align-items: center;
 
-            width: 100%;
-            max-width: 480px;
+            gap: 7px;
 
-            margin: 32px 0;
+            margin-left: 8px;
 
-            padding: 0;
-
-            background: transparent;
-
-            border: none;
-
-            box-shadow: none;
+            font-size: 0.82rem;
+            font-weight: 800;
         }
 
-
-        .mh-foxglove-brand-logo {
-
-            display: block;
-
-            width: 100%;
-            height: auto;
-
-            object-fit: contain;
-
-            background: transparent;
+        .language-switcher a {
+            color: inherit;
+            text-decoration: none;
         }
 
+        .language-switcher strong {
+            color: var(--green);
+        }
 
-        @media (max-width: 650px) {
+        @media (max-width: 900px) {
 
-            .mh-foxglove-brand {
-
-                max-width: 100%;
-
-                margin: 26px 0;
+            .language-switcher {
+                display: none;
             }
 
         }
@@ -191,11 +176,11 @@
         <a
             href="index.html"
             class="logo"
-            aria-label="Madeira Helper homepage"
+            aria-label="Página inicial da Madeira Helper"
         >
 
             <img
-                src="images/madeira-helper-logo-green.png"
+                src="../images/madeira-helper-logo-green.png"
                 alt="Madeira Helper"
             >
 
@@ -206,7 +191,7 @@
 
         <nav
             class="main-nav"
-            aria-label="Main navigation"
+            aria-label="Navegação principal"
         >
 
             <a
@@ -214,73 +199,84 @@
                 class="active"
                 aria-current="page"
             >
-                Home
+                Início
             </a>
 
             <a href="services.html">
-                Services
+                Serviços
             </a>
 
             <a href="businesses.html">
-                Businesses
+                Empresas
             </a>
 
             <a href="about.html">
-                About
+                Sobre Nós
             </a>
 
             <a href="contact.html">
-                Contact
+                Contacto
             </a>
 
             <a href="for-businesses.html">
-                For Businesses
+                Para Empresas
             </a>
+
+
+            <!-- LANGUAGE SWITCHER -->
+
+<div class="language-switcher">
+
+    <a
+        href="../index.html"
+        class="language-link"
+        lang="en"
+        hreflang="en"
+    >
+        EN
+    </a>
+
+    <span class="language-divider">
+        |
+    </span>
+
+    <a
+        href="index.html"
+        class="language-link active"
+        aria-current="page"
+    >
+        PT
+    </a>
+
+</div>
 
         </nav>
 
 
         <!-- HEADER ACTIONS -->
 
-<div class="header-actions">
+        <div class="header-actions">
 
-    <!-- LANGUAGE SWITCHER -->
-    <div class="language-switcher" aria-label="Language selector">
+            <a
+                href="https://wa.me/351927188219"
+                target="_blank"
+                rel="noopener"
+                class="nav-button"
+            >
 
-        <a
-            href="index.html"
-            class="language-link active"
-            aria-current="page"
-        >
-            EN
-        </a>
+                Pedir Ajuda
 
-        <span class="language-divider">|</span>
+                <span>
+                    →
+                </span>
 
-        <a
-            href="pt/index.html"
-            class="language-link"
-        >
-            PT
-        </a>
-
-    </div>
-
-    <a
-        href="https://wa.me/351927188219"
-        target="_blank"
-        rel="noopener"
-        class="nav-button"
-    >
-        Get Help
-        <span>→</span>
-    </a>
+            </a>
 
 
             <button
                 class="menu-toggle"
                 id="menu-toggle"
-                aria-label="Open navigation menu"
+                aria-label="Abrir menu de navegação"
                 aria-expanded="false"
                 aria-controls="mobile-menu"
             >
@@ -306,27 +302,35 @@
         <div class="container mobile-menu-inner">
 
             <a href="index.html">
-                Home
+                Início
             </a>
 
             <a href="services.html">
-                Services
+                Serviços
             </a>
 
             <a href="businesses.html">
-                Businesses
+                Empresas
             </a>
 
             <a href="about.html">
-                About
+                Sobre Nós
             </a>
 
             <a href="contact.html">
-                Contact
+                Contacto
             </a>
 
             <a href="for-businesses.html">
-                For Businesses
+                Para Empresas
+            </a>
+
+            <a
+                href="../index.html"
+                lang="en"
+                hreflang="en"
+            >
+                English (EN)
             </a>
 
             <a
@@ -335,7 +339,7 @@
                 rel="noopener"
                 class="mobile-help-button"
             >
-                WhatsApp Us →
+                Fale connosco no WhatsApp →
             </a>
 
         </div>
@@ -368,6 +372,7 @@
 
         <div class="hero-content">
 
+
             <div class="hero-badge">
 
                 <span class="badge-dot"></span>
@@ -379,10 +384,10 @@
 
             <h1>
 
-                Everything you need.
+                Tudo o que precisa.
 
                 <span>
-                    All in one place.
+                    Tudo num só lugar.
                 </span>
 
             </h1>
@@ -390,18 +395,17 @@
 
             <p class="hero-subtitle">
 
-                Discover places to eat, things to do,
-                somewhere to stay, trusted local businesses
-                and everyday services across Madeira
-                and Porto Santo.
+                Descubra onde comer, o que fazer, onde ficar,
+                empresas locais de confiança e serviços do dia a dia
+                na Madeira e no Porto Santo.
 
             </p>
 
 
             <p class="hero-text">
 
-                Eat. Stay. Explore. Save.
-                Shop. Relax. Get things done.
+                Comer. Ficar. Explorar. Poupar.
+                Comprar. Relaxar. Resolver.
 
             </p>
 
@@ -413,9 +417,11 @@
                     class="btn btn-primary"
                 >
 
-                    Explore Madeira &amp; Porto Santo
+                    Explorar Madeira &amp; Porto Santo
 
-                    <span>→</span>
+                    <span>
+                        →
+                    </span>
 
                 </a>
 
@@ -424,9 +430,7 @@
                     href="contact.html"
                     class="btn btn-secondary"
                 >
-
-                    I need help
-
+                    Preciso de ajuda
                 </a>
 
             </div>
@@ -434,31 +438,39 @@
 
             <div class="hero-trust">
 
+
                 <div class="trust-item">
 
-                    <span class="trust-check">✓</span>
+                    <span class="trust-check">
+                        ✓
+                    </span>
 
-                    Local discovery
+                    Descoberta local
 
                 </div>
 
 
                 <div class="trust-item">
 
-                    <span class="trust-check">✓</span>
+                    <span class="trust-check">
+                        ✓
+                    </span>
 
-                    English speaking
+                    Atendimento em inglês
 
                 </div>
 
 
                 <div class="trust-item">
 
-                    <span class="trust-check">✓</span>
+                    <span class="trust-check">
+                        ✓
+                    </span>
 
-                    Personal help
+                    Ajuda personalizada
 
                 </div>
+
 
             </div>
 
@@ -472,9 +484,10 @@
 
             <div class="hero-image-wrapper">
 
+
                 <img
-                    src="images/madeira-hero.jpg"
-                    alt="Beautiful landscape in Madeira"
+                    src="../images/madeira-hero.jpg"
+                    alt="Paisagem da Madeira"
                     class="hero-image"
                 >
 
@@ -488,11 +501,11 @@
                     <div>
 
                         <strong>
-                            Discover the islands
+                            Descubra as ilhas
                         </strong>
 
                         <span>
-                            Places, services &amp; experiences.
+                            Locais, serviços e experiências.
                         </span>
 
                     </div>
@@ -502,15 +515,19 @@
 
                 <div class="floating-card floating-card-location">
 
-                    <span>📍</span>
+                    <span>
+                        📍
+                    </span>
 
                     Madeira &amp; Porto Santo
 
                 </div>
 
+
             </div>
 
         </div>
+
 
     </div>
 
@@ -526,47 +543,49 @@
 
     <div class="ticker-track">
 
-        <span>EAT</span>
+        <span>COMER</span>
         <span class="ticker-dot">✦</span>
 
-        <span>STAY</span>
+        <span>FICAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>EXPLORE</span>
+        <span>EXPLORAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>SAVE</span>
+        <span>POUPAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>SHOP</span>
+        <span>COMPRAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>RELAX</span>
+        <span>RELAXAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>GET THINGS DONE</span>
+        <span>RESOLVER</span>
         <span class="ticker-dot">✦</span>
 
 
-        <span>EAT</span>
+        <!-- DUPLICATED FOR CONTINUOUS TICKER -->
+
+        <span>COMER</span>
         <span class="ticker-dot">✦</span>
 
-        <span>STAY</span>
+        <span>FICAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>EXPLORE</span>
+        <span>EXPLORAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>SAVE</span>
+        <span>POUPAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>SHOP</span>
+        <span>COMPRAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>RELAX</span>
+        <span>RELAXAR</span>
         <span class="ticker-dot">✦</span>
 
-        <span>GET THINGS DONE</span>
+        <span>RESOLVER</span>
         <span class="ticker-dot">✦</span>
 
     </div>
@@ -589,26 +608,29 @@
 
         <div class="services-header">
 
+
             <div>
 
                 <span class="section-label">
-                    Explore Madeira &amp; Porto Santo
+                    Explorar Madeira &amp; Porto Santo
                 </span>
 
                 <h2>
-    What are you
-    <span class="mobile-heading-break">looking for?</span>
-</h2>
+                    O que procura?
+                </h2>
+
             </div>
 
 
             <p>
 
-                From savings and local services
-                to restaurants, hotels and unforgettable
-                island experiences — start your search here.
+                Desde poupança e serviços locais
+                a restaurantes, hotéis e experiências
+                inesquecíveis nas ilhas —
+                comece aqui a sua pesquisa.
 
             </p>
+
 
         </div>
 
@@ -617,7 +639,7 @@
         <div class="mh-category-grid">
 
 
-            <!-- SAVINGS -->
+            <!-- FINANCIAL -->
 
             <a
                 href="businesses.html?category=savings"
@@ -629,20 +651,20 @@
                 </span>
 
                 <span class="mh-category-tag">
-                    Featured
+                    Destaque
                 </span>
 
                 <h3>
-                    Savings &amp; Financial Planning
+                    Poupança e Planeamento Financeiro
                 </h3>
 
                 <p>
-                    Explore savings and financial
-                    planning services.
+                    Explore serviços de poupança
+                    e planeamento financeiro.
                 </p>
 
                 <span class="mh-card-link">
-                    Explore savings →
+                    Explorar poupança →
                 </span>
 
             </a>
@@ -661,16 +683,16 @@
                 </span>
 
                 <h3>
-                    Eat &amp; Drink
+                    Comer e Beber
                 </h3>
 
                 <p>
-                    Restaurants, cafés, bakeries,
-                    bars and local flavours.
+                    Restaurantes, cafés, pastelarias,
+                    bares e sabores locais.
                 </p>
 
                 <span class="mh-card-link">
-                    Discover places →
+                    Descobrir locais →
                 </span>
 
             </a>
@@ -689,16 +711,16 @@
                 </span>
 
                 <h3>
-                    Things to Do
+                    O que Fazer
                 </h3>
 
                 <p>
-                    Tours, walks, boat trips,
-                    attractions and island adventures.
+                    Passeios, caminhadas, viagens de barco,
+                    atrações e aventuras pelas ilhas.
                 </p>
 
                 <span class="mh-card-link">
-                    Find experiences →
+                    Encontrar experiências →
                 </span>
 
             </a>
@@ -717,16 +739,16 @@
                 </span>
 
                 <h3>
-                    Stay
+                    Alojamento
                 </h3>
 
                 <p>
-                    Hotels, guesthouses and places
-                    to stay across the islands.
+                    Hotéis, alojamentos locais
+                    e outros locais onde ficar nas ilhas.
                 </p>
 
                 <span class="mh-card-link">
-                    Find somewhere →
+                    Encontrar alojamento →
                 </span>
 
             </a>
@@ -745,16 +767,16 @@
                 </span>
 
                 <h3>
-                    Home &amp; Property
+                    Casa e Imóveis
                 </h3>
 
                 <p>
-                    Repairs, cleaning, maintenance,
-                    property and home services.
+                    Reparações, limpeza, manutenção,
+                    imóveis e serviços para a casa.
                 </p>
 
                 <span class="mh-card-link">
-                    Find help →
+                    Encontrar ajuda →
                 </span>
 
             </a>
@@ -773,23 +795,23 @@
                 </span>
 
                 <h3>
-                    Cars &amp; Transport
+                    Automóveis e Transportes
                 </h3>
 
                 <p>
-                    Garages, tyres, rentals,
-                    transfers and transport services.
+                    Oficinas, pneus, aluguer de viaturas,
+                    transferes e serviços de transporte.
                 </p>
 
                 <span class="mh-card-link">
-                    Get moving →
+                    Ver opções →
                 </span>
 
             </a>
 
 
 
-            <!-- HEALTH / BEAUTY -->
+            <!-- HEALTH -->
 
             <a
                 href="businesses.html?category=health-beauty"
@@ -801,16 +823,16 @@
                 </span>
 
                 <h3>
-                    Health, Beauty &amp; Wellbeing
+                    Saúde, Beleza e Bem-Estar
                 </h3>
 
                 <p>
-                    Barbers, hair, beauty,
-                    fitness and wellbeing services.
+                    Barbearias, cabeleireiros, beleza,
+                    fitness e serviços de bem-estar.
                 </p>
 
                 <span class="mh-card-link">
-                    Explore wellbeing →
+                    Explorar bem-estar →
                 </span>
 
             </a>
@@ -829,19 +851,20 @@
                 </span>
 
                 <h3>
-                    Shopping &amp; Local Businesses
+                    Compras e Empresas Locais
                 </h3>
 
                 <p>
-                    Local shops, products,
-                    specialists and independent businesses.
+                    Lojas locais, produtos, especialistas
+                    e negócios independentes.
                 </p>
 
                 <span class="mh-card-link">
-                    Shop local →
+                    Comprar local →
                 </span>
 
             </a>
+
 
         </div>
 
@@ -854,77 +877,93 @@
                 class="text-link"
             >
 
-                Browse all businesses
+                Ver todas as empresas
 
-                <span>→</span>
+                <span>
+                    →
+                </span>
 
             </a>
 
         </div>
 
+
     </div>
 
 </section>
-
-
-
 <!-- =====================================================
-     DISCOVER MADEIRA & PORTO SANTO
+     MORE THAN A DIRECTORY
 ===================================================== -->
 
-<section class="new-madeira-section mh-discover-section">
+<section class="new-madeira-section">
 
     <div class="container new-madeira-grid">
 
 
+        <!-- IMAGE -->
+
         <div class="new-madeira-image">
 
             <img
-                src="images/madeira-life.jpg"
-                alt="Life and experiences in Madeira"
+                src="../images/madeira-life.jpg"
+                alt="Vida, paisagens e experiências na Madeira"
             >
 
         </div>
 
 
 
+        <!-- CONTENT -->
+
         <div class="new-madeira-content">
 
+
             <span class="section-label">
-                More than a directory
+                MAIS DO QUE UM DIRETÓRIO
             </span>
 
 
             <h2>
-
-                Discover more of
-                Madeira &amp; Porto Santo.
-
+                Descubra mais da
+                Madeira e do Porto Santo.
             </h2>
 
 
             <p>
 
-                Find a new café, book an island experience,
-                discover somewhere to stay, find a barber,
-                arrange a car service or connect with a local
-                professional — Madeira Helper brings it together.
+                Descubra um novo café, reserve uma experiência
+                na ilha, encontre onde ficar, uma barbearia,
+                marque um serviço automóvel ou contacte
+                um profissional local.
+
+            </p>
+
+
+            <p>
+
+                A Madeira Helper reúne empresas,
+                serviços, experiências e locais úteis
+                num só lugar.
 
             </p>
 
 
             <a
                 href="businesses.html"
-                class="btn btn-dark"
+                class="btn btn-primary"
             >
 
-                Start Exploring
+                Começar a explorar
 
-                <span>→</span>
+                <span>
+                    →
+                </span>
 
             </a>
 
+
         </div>
+
 
     </div>
 
@@ -933,73 +972,89 @@
 
 
 <!-- =====================================================
-     PERSONAL HELP
+     PERSONAL HELP / LANGUAGE SUPPORT
 ===================================================== -->
 
-<section class="language-section mh-help-section">
+<section class="language-section">
 
     <div class="container language-grid">
 
 
+        <!-- LEFT -->
+
         <div class="language-intro">
 
-            <span class="section-label light-label">
-                Can't find it?
+
+            <span class="section-label">
+                NÃO ENCONTRA O QUE PROCURA?
             </span>
 
 
             <h2>
 
-                Just ask
+                Pergunte à
                 Madeira Helper.
 
             </h2>
+
 
         </div>
 
 
 
+        <!-- RIGHT -->
+
         <div class="language-content">
 
 
             <h3>
-                Real help when you need it.
+                Ajuda real quando precisa.
             </h3>
 
 
             <p>
 
-                Sometimes you don't want to search
-                through dozens of options.
-
-                Tell us what you need and we'll help
-                you find a suitable local service
-                or business.
+                Nem sempre quer perder tempo
+                a procurar entre dezenas de opções.
 
             </p>
 
 
             <p>
 
-                And if language is getting in the way,
-                we can help make the connection
-                and communication easier.
+                Diga-nos o que precisa e ajudamos
+                a encontrar um serviço local,
+                uma empresa ou uma opção adequada.
+
+            </p>
+
+
+            <p>
+
+                E se a língua for uma barreira,
+                podemos ajudar a estabelecer o contacto
+                e a tornar a comunicação mais simples
+                entre si e as empresas portuguesas.
 
             </p>
 
 
             <a
                 href="contact.html"
-                class="language-link"
+                class="btn btn-light"
             >
 
-                Tell us what you need
+                Diga-nos o que precisa
 
-                <span>→</span>
+                <span>
+                    →
+                </span>
 
             </a>
 
+
         </div>
+
 
     </div>
 
@@ -1007,159 +1062,171 @@
 
 
 
-<!-- =====================================================
-     FOXGLOVE FEATURED PARTNER
+<!-- =====================================================<!-- =====================================================
+     FOXGLOVE INTERNATIONAL
+     FEATURED PARTNER
+     SAME DESIGN AS ENGLISH VERSION
 ===================================================== -->
 
-<section class="mh-foxglove-section">
+<section class="foxglove-showcase">
 
     <div class="container">
 
-
-        <div class="mh-foxglove-shell">
-
-
-            <!-- FOXGLOVE CONTENT -->
-
-            <div class="mh-foxglove-copy">
+        <div class="foxglove-showcase-card">
 
 
-                <span class="mh-partner-eyebrow">
-                    Featured Partner
+            <!-- DECORATIVE BACKGROUND -->
+
+            <div
+                class="foxglove-circle foxglove-circle-one"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="foxglove-circle foxglove-circle-two"
+                aria-hidden="true"
+            ></div>
+
+
+
+            <!-- LEFT CONTENT -->
+
+            <div class="foxglove-showcase-content">
+
+
+                <span class="foxglove-featured-badge">
+                    PARCEIRO EM DESTAQUE
                 </span>
 
 
-                <span class="section-label">
-                    Savings &amp; Financial Planning
+                <span class="foxglove-showcase-label">
+                    POUPANÇA &amp; PLANEAMENTO FINANCEIRO
                 </span>
 
 
                 <h2>
-
-                    Plan today.
-
-                    <br>
-
-                    Prepare for tomorrow.
-
+                    Planeie hoje.<br>
+                    Prepare o<br>
+                    amanhã.
                 </h2>
 
 
-                <p class="mh-foxglove-intro">
+                <p class="foxglove-showcase-intro">
 
-                    Madeira Helper makes it easier
-                    to discover and connect with
-                    financial service providers
-                    serving people in Madeira
-                    and Porto Santo.
+                    A Madeira Helper facilita a descoberta
+                    e o contacto com prestadores de serviços
+                    financeiros que apoiam pessoas na Madeira
+                    e no Porto Santo.
 
                 </p>
 
 
 
-                <!-- OFFICIAL FOXGLOVE LOGO -->
+                <!-- FOXGLOVE LOGO -->
 
-                <div class="mh-foxglove-brand">
+                <div class="foxglove-showcase-logo">
 
                     <img
-                        src="images/foxglove-logo.png"
+                        src="../images/businesses/foxglove-logo.png"
                         alt="Foxglove International Limited"
-                        class="mh-foxglove-brand-logo"
                     >
 
                 </div>
 
 
 
-                <p>
+                <p class="foxglove-showcase-description">
 
-                    Explore savings and financial
-                    planning solutions available through
-                    Foxglove International and speak
-                    directly with their team to learn more.
+                    Explore soluções de poupança e planeamento
+                    financeiro disponibilizadas pela Foxglove
+                    International e fale diretamente com a sua
+                    equipa para saber mais.
 
                 </p>
 
 
 
-                <div class="mh-foxglove-actions">
+                <div class="foxglove-showcase-actions">
+
 
                     <a
-                        href="foxglove.html"
-                        class="btn btn-white"
+                        href="businesses.html?category=savings"
+                        class="foxglove-primary-button"
                     >
-
-                        Explore Foxglove
-
+                        Conhecer a Foxglove
                         <span>→</span>
-
                     </a>
 
 
                     <a
-                        href="foxglove.html#enquire"
-                        class="mh-foxglove-link"
+                        href="contact.html"
+                        class="foxglove-text-link"
                     >
-
-                        Speak to their team
-
+                        Falar com a equipa
                     </a>
+
 
                 </div>
+
 
             </div>
 
 
 
-            <!-- FOXGLOVE VISUAL -->
+            <!-- RIGHT SIDE -->
 
-            <div
-                class="mh-foxglove-visual"
-                aria-hidden="true"
-            >
-
-                <div class="mh-finance-orbit mh-finance-orbit-one"></div>
-
-                <div class="mh-finance-orbit mh-finance-orbit-two"></div>
+            <div class="foxglove-showcase-visual">
 
 
-                <div class="mh-finance-card">
+                <div
+                    class="foxglove-money-badge"
+                    aria-hidden="true"
+                >
+                    £€
+                </div>
+
+
+
+                <div class="foxglove-financial-card">
+
 
                     <span>
-                        Financial wellbeing
+                        BEM-ESTAR FINANCEIRO
                     </span>
 
-                    <strong>
-                        Save with purpose.
-                    </strong>
+
+                    <h3>
+                        Poupe com um objetivo.
+                    </h3>
+
 
                     <p>
-                        Explore your options and speak
-                        directly with the provider.
+                        Explore as suas opções e fale
+                        diretamente com o prestador.
                     </p>
 
+
                 </div>
 
-
-                <div class="mh-finance-badge">
-                    £ €
-                </div>
 
             </div>
+
 
         </div>
 
 
 
-        <p class="mh-financial-disclaimer">
+        <!-- DISCLAIMER OUTSIDE GREEN CARD -->
 
-            Financial products and services are provided
-            by Foxglove International.
+        <p class="foxglove-showcase-disclaimer">
 
-            Madeira Helper provides the introduction
-            and does not provide financial advice.
+            Os produtos e serviços financeiros são
+            disponibilizados pela Foxglove International.
+            A Madeira Helper facilita o contacto e não presta
+            aconselhamento financeiro.
 
         </p>
+
 
     </div>
 
@@ -1171,100 +1238,148 @@
      HOW IT WORKS
 ===================================================== -->
 
-<section class="how-section">
+<section class="how-it-works">
 
     <div class="container">
 
 
-        <div class="how-header">
+        <div class="section-heading">
+
 
             <span class="section-label">
-                Madeira made easier
+                MADEIRA MAIS SIMPLES
             </span>
 
 
             <h2>
-                Discover it yourself. Or ask us.
+                Descubra por si.
+                Ou pergunte-nos.
             </h2>
 
+
+            <p>
+
+                Pode explorar a Madeira Helper
+                por conta própria ou falar connosco
+                quando precisar de uma ligação local.
+
+            </p>
+
+
         </div>
 
 
 
-        <div class="steps">
+        <div class="steps-grid">
 
 
-            <div class="step">
+            <!-- STEP 1 -->
 
-                <div class="step-number">
+            <article class="step">
+
+
+                <span class="step-number">
                     01
-                </div>
+                </span>
 
 
                 <div class="step-content">
 
+
                     <h3>
-                        Explore
+                        Explorar
                     </h3>
 
+
                     <p>
-                        Browse places, businesses,
-                        services and experiences.
+
+                        Descubra empresas,
+                        locais, serviços
+                        e experiências
+                        na Madeira
+                        e no Porto Santo.
+
                     </p>
+
 
                 </div>
 
-            </div>
+
+            </article>
 
 
 
-            <div class="step">
+            <!-- STEP 2 -->
 
-                <div class="step-number">
+            <article class="step">
+
+
+                <span class="step-number">
                     02
-                </div>
+                </span>
 
 
                 <div class="step-content">
 
+
                     <h3>
-                        Choose
+                        Escolher
                     </h3>
 
+
                     <p>
-                        Find an option that suits
-                        what you're looking for.
+
+                        Encontre uma opção
+                        adequada ao que procura
+                        e contacte diretamente
+                        a empresa.
+
                     </p>
+
 
                 </div>
 
-            </div>
+
+            </article>
 
 
 
-            <div class="step">
+            <!-- STEP 3 -->
 
-                <div class="step-number">
+            <article class="step">
+
+
+                <span class="step-number">
                     03
-                </div>
+                </span>
 
 
                 <div class="step-content">
 
+
                     <h3>
-                        Need help?
+                        Precisa de ajuda?
                     </h3>
 
+
                     <p>
-                        Message Madeira Helper and
-                        we'll help make the connection.
+
+                        Envie-nos uma mensagem
+                        e a Madeira Helper
+                        ajuda a encontrar
+                        a ligação certa.
+
                     </p>
+
 
                 </div>
 
-            </div>
+
+            </article>
+
 
         </div>
+
 
     </div>
 
@@ -1274,50 +1389,53 @@
 
 <!-- =====================================================
      FOR BUSINESSES
+     PORTUGUESE - MATCHES ENGLISH VERSION
 ===================================================== -->
 
-<section class="mh-business-section">
+<section class="business-cta-section">
 
     <div class="container">
 
+        <div class="business-cta-card">
 
-        <div class="mh-business-inner">
 
+            <!-- LEFT CONTENT -->
 
-            <div>
+            <div class="business-cta-content">
 
                 <span class="section-label">
-                    Madeira &amp; Porto Santo businesses
+                    EMPRESAS DA MADEIRA E DO PORTO SANTO
                 </span>
 
 
                 <h2>
-                    Be part of Madeira Helper.
+                    Faça parte da Madeira Helper.
                 </h2>
 
 
                 <p>
-
-                    Put your business in front of residents,
-                    newcomers and visitors looking for places,
-                    services and experiences across the islands.
-
+                    Coloque a sua empresa à frente de residentes,
+                    novos residentes e visitantes que procuram locais,
+                    serviços e experiências na Madeira e no Porto Santo.
                 </p>
 
             </div>
 
 
+            <!-- RIGHT BUTTON -->
 
-            <a
-                href="for-businesses.html"
-                class="btn btn-dark"
-            >
+            <div class="business-cta-action">
 
-                Join Madeira Helper
+                <a
+                    href="for-businesses.html"
+                    class="business-join-button"
+                >
+                    Juntar-se à Madeira Helper
+                    <span>→</span>
+                </a>
 
-                <span>→</span>
+            </div>
 
-            </a>
 
         </div>
 
@@ -1333,130 +1451,152 @@
 
 <section class="big-cta">
 
-    <div class="container">
+    <div class="container big-cta-inner">
 
 
-        <div class="big-cta-inner">
+        <span class="section-label">
+            MADEIRA HELPER
+        </span>
 
 
-            <span class="cta-eyebrow">
-                Madeira &amp; Porto Santo
+        <h2>
+
+            Explore as ilhas.
+
+            <span>
+                Ou diga-nos o que precisa.
             </span>
 
-
-           <h2>
-    What are you
-    <span class="mobile-heading-break">looking for?</span>
-</h2>
+        </h2>
 
 
-            <p>
+        <p>
 
-                Explore the islands or tell us
-                what you need.
+            Restaurantes, atividades,
+            alojamento, serviços locais,
+            empresas e ajuda personalizada —
+            tudo num só lugar.
 
-                Madeira Helper is here
-                to make it easier.
-
-            </p>
+        </p>
 
 
 
-            <div class="big-cta-buttons">
+        <div class="big-cta-buttons">
 
 
-                <a
-                    href="businesses.html"
-                    class="btn btn-white"
-                >
+            <a
+                href="businesses.html"
+                class="btn btn-primary"
+            >
 
-                    Start Exploring
+                Explorar Madeira Helper
 
-                    <span>→</span>
+                <span>
+                    →
+                </span>
 
-                </a>
-
-
-                <a
-                    href="https://wa.me/351927188219"
-                    target="_blank"
-                    rel="noopener"
-                    class="cta-secondary-link"
-                >
-
-                    WhatsApp us
-
-                </a>
-
-            </div>
+            </a>
 
 
-            <div class="cta-decoration">
-                ✦
-            </div>
+            <a
+                href="https://wa.me/351927188219"
+                target="_blank"
+                rel="noopener"
+                class="btn btn-secondary"
+            >
+
+                <i
+                    class="fa-brands fa-whatsapp"
+                    aria-hidden="true"
+                ></i>
+
+                WhatsApp
+
+            </a>
+
 
         </div>
+
 
     </div>
 
 </section>
 
 
-</main>
 
-<!-- =========================================
-     FEATURED PARTNER - FOXGLOVE INTERNATIONAL
-========================================= -->
+<!-- =====================================================
+     FEATURED PARTNER STRIP
+===================================================== -->
 
 <section class="featured-partner">
 
-    <div class="featured-partner-inner">
+    <div class="container featured-partner-inner">
+
 
         <div class="featured-partner-logo">
 
+
             <span class="featured-partner-label">
-                FEATURED PARTNER
+                PARCEIRO EM DESTAQUE
             </span>
 
+
             <img
-                src="images/businesses/foxglove-logo.png"
-                alt="Foxglove International Limited"
+                src="../images/businesses/foxglove-logo.png"
+                alt="Foxglove International"
             >
 
+
         </div>
+
 
 
         <div class="featured-partner-content">
 
+
             <p class="featured-partner-eyebrow">
-                PROUD PARTNER OF MADEIRA HELPER
+                PARCEIRO DA MADEIRA HELPER
             </p>
+
 
             <h2>
-                Proud to support Madeira Helper.
+                Orgulhosamente a apoiar
+                a Madeira Helper.
             </h2>
 
+
             <p>
-                Foxglove International is a featured partner of Madeira Helper,
-    supporting the development of a platform designed to connect
-    residents, newcomers and visitors with trusted local businesses
-    across Madeira.
+
+                A Foxglove International é um parceiro
+                em destaque da Madeira Helper,
+                apoiando o desenvolvimento de uma plataforma
+                criada para ligar residentes,
+                novos residentes e visitantes
+                a empresas e serviços na Madeira.
+
             </p>
 
+
             <a
-                href="businesses.html"
+                href="businesses.html?category=savings"
                 class="featured-partner-link"
             >
-                Discover Foxglove
-                <span>→</span>
+
+                Conhecer a Foxglove
+
+                <span>
+                    →
+                </span>
+
             </a>
 
+
         </div>
+
 
     </div>
 
 </section>
-
 <!-- =====================================================
      FOOTER
 ===================================================== -->
@@ -1470,13 +1610,15 @@
 
         <div class="footer-brand">
 
+
             <a
                 href="index.html"
                 class="footer-logo"
+                aria-label="Página inicial da Madeira Helper"
             >
 
                 <img
-                    src="images/madeira-helper-logo.png"
+                    src="../images/madeira-helper-logo.png"
                     alt="Madeira Helper"
                 >
 
@@ -1485,28 +1627,36 @@
 
             <p>
 
-                Your local connection in Madeira
-                and Porto Santo.
+                A sua ligação local
+                na Madeira e no Porto Santo.
 
-                Discover places, businesses,
-                experiences and everyday services
-                across the islands.
+            </p>
+
+
+            <p>
+
+                Descubra empresas,
+                serviços, experiências
+                e tudo o que as ilhas
+                têm para oferecer.
 
             </p>
 
 
 
+            <!-- SOCIAL MEDIA -->
+
             <div
                 class="footer-socials"
-                aria-label="Madeira Helper social media and contact links"
+                aria-label="Redes sociais da Madeira Helper"
             >
 
 
                 <a
                     href="https://www.facebook.com/madeirahelper"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Madeira Helper on Facebook"
+                    rel="noopener"
+                    aria-label="Madeira Helper no Facebook"
                     title="Facebook"
                 >
 
@@ -1521,8 +1671,8 @@
                 <a
                     href="https://www.instagram.com/madeirahelper/"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Madeira Helper on Instagram"
+                    rel="noopener"
+                    aria-label="Madeira Helper no Instagram"
                     title="Instagram"
                 >
 
@@ -1537,8 +1687,8 @@
                 <a
                     href="https://www.tiktok.com/@madeira.helper"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Madeira Helper on TikTok"
+                    rel="noopener"
+                    aria-label="Madeira Helper no TikTok"
                     title="TikTok"
                 >
 
@@ -1553,8 +1703,8 @@
                 <a
                     href="https://wa.me/351927188219"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Contact Madeira Helper on WhatsApp"
+                    rel="noopener"
+                    aria-label="Contactar a Madeira Helper através do WhatsApp"
                     title="WhatsApp"
                 >
 
@@ -1566,67 +1716,55 @@
                 </a>
 
 
-                <a
-                    href="mailto:madeirahelper@gmail.com"
-                    aria-label="Email Madeira Helper"
-                    title="Email"
-                >
-
-                    <i
-                        class="fa-solid fa-envelope"
-                        aria-hidden="true"
-                    ></i>
-
-                </a>
-
-
-                <a
-                    href="tel:+351927188219"
-                    aria-label="Call Madeira Helper"
-                    title="Call Madeira Helper"
-                >
-
-                    <i
-                        class="fa-solid fa-phone"
-                        aria-hidden="true"
-                    ></i>
-
-                </a>
-
             </div>
+
 
         </div>
 
 
 
-        <!-- NAVIGATION -->
+        <!-- EXPLORE -->
 
         <div class="footer-column">
 
-            <h4>
-                Explore
-            </h4>
+
+            <h3>
+                Explorar
+            </h3>
 
 
-            <a href="index.html">
-                Home
-            </a>
+            <nav
+                class="footer-links"
+                aria-label="Links para explorar"
+            >
 
-            <a href="services.html">
-                Services
-            </a>
+                <a href="index.html">
+                    Início
+                </a>
 
-            <a href="businesses.html">
-                Businesses
-            </a>
 
-            <a href="about.html">
-                About
-            </a>
+                <a href="services.html">
+                    Serviços
+                </a>
 
-            <a href="contact.html">
-                Contact
-            </a>
+
+                <a href="businesses.html">
+                    Empresas
+                </a>
+
+
+                <a href="about.html">
+                    Sobre Nós
+                </a>
+
+
+                <a href="contact.html">
+                    Contacto
+                </a>
+
+
+            </nav>
+
 
         </div>
 
@@ -1636,30 +1774,86 @@
 
         <div class="footer-column">
 
-            <h4>
-                Discover
-            </h4>
+
+            <h3>
+                Descobrir
+            </h3>
 
 
-            <a href="businesses.html?category=savings">
-                Savings &amp; Financial Planning
-            </a>
+            <nav
+                class="footer-links"
+                aria-label="Links para descobrir"
+            >
 
-            <a href="businesses.html?category=eat-drink">
-                Eat &amp; Drink
-            </a>
+                <a href="businesses.html?category=eat-drink">
+                    Comer e Beber
+                </a>
 
-            <a href="businesses.html?category=things-to-do">
-                Things to Do
-            </a>
 
-            <a href="businesses.html?category=stay">
-                Stay
-            </a>
+                <a href="businesses.html?category=things-to-do">
+                    O que Fazer
+                </a>
 
-            <a href="businesses.html">
-                All Categories
-            </a>
+
+                <a href="businesses.html?category=stay">
+                    Alojamento
+                </a>
+
+
+                <a href="businesses.html?category=home-property">
+                    Casa e Imóveis
+                </a>
+
+
+                <a href="businesses.html?category=cars-transport">
+                    Automóveis e Transportes
+                </a>
+
+
+                <a href="businesses.html?category=savings">
+                    Poupança e Finanças
+                </a>
+
+
+            </nav>
+
+
+        </div>
+
+
+
+        <!-- BUSINESS -->
+
+        <div class="footer-column">
+
+
+            <h3>
+                Empresas
+            </h3>
+
+
+            <nav
+                class="footer-links"
+                aria-label="Links para empresas"
+            >
+
+                <a href="for-businesses.html">
+                    Juntar a sua empresa
+                </a>
+
+
+                <a href="businesses.html">
+                    Diretório de Empresas
+                </a>
+
+
+                <a href="contact.html">
+                    Falar com a Madeira Helper
+                </a>
+
+
+            </nav>
+
 
         </div>
 
@@ -1667,50 +1861,124 @@
 
         <!-- CONTACT -->
 
-        <div class="footer-column">
-
-            <h4>
-                Contact
-            </h4>
+        <div class="footer-column footer-contact">
 
 
-            <a href="tel:+351927188219">
-                +351 927 188 219
+            <h3>
+                Contacto
+            </h3>
+
+
+            <a
+                href="tel:+351927188219"
+                class="footer-contact-link"
+            >
+
+                <i
+                    class="fa-solid fa-phone"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    +351 927 188 219
+                </span>
+
             </a>
 
-
-            <a href="mailto:madeirahelper@gmail.com">
-                Email us
-            </a>
 
 
             <a
                 href="https://wa.me/351927188219"
                 target="_blank"
                 rel="noopener"
+                class="footer-contact-link"
             >
-                WhatsApp
+
+                <i
+                    class="fa-brands fa-whatsapp"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    WhatsApp
+                </span>
+
             </a>
 
+
+
+            <a
+                href="mailto:madeirahelper@gmail.com"
+                class="footer-contact-link"
+            >
+
+                <i
+                    class="fa-regular fa-envelope"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    madeirahelper@gmail.com
+                </span>
+
+            </a>
+
+
+
+            <div class="footer-location">
+
+                <i
+                    class="fa-solid fa-location-dot"
+                    aria-hidden="true"
+                ></i>
+
+                <span>
+                    Madeira, Portugal
+                </span>
+
+            </div>
+
+
         </div>
+
 
     </div>
 
 
 
-    <!-- FOOTER BOTTOM -->
+    <!-- =================================================
+         FOOTER BOTTOM
+    ================================================== -->
 
     <div class="container footer-bottom">
 
-        <p>
-            © 2026 Madeira Helper.
-            All rights reserved.
-        </p>
+
+        <div class="footer-bottom-left">
+
+            <p>
+                © 2026 Madeira Helper.
+                Todos os direitos reservados.
+            </p>
+
+        </div>
 
 
-        <p>
-            Madeira &amp; Porto Santo, Portugal 🇵🇹
-        </p>
+
+        <div class="footer-bottom-right">
+
+
+            <a href="privacy.html">
+                Política de Privacidade
+            </a>
+
+
+            <a href="terms.html">
+                Termos e Condições
+            </a>
+
+
+        </div>
+
 
     </div>
 
@@ -1727,16 +1995,14 @@
     target="_blank"
     rel="noopener"
     class="floating-whatsapp"
-    aria-label="Contact Madeira Helper on WhatsApp"
+    aria-label="Falar com a Madeira Helper no WhatsApp"
+    title="Fale connosco no WhatsApp"
 >
 
-    <span>
-        💬
-    </span>
-
-    <strong>
-        WhatsApp
-    </strong>
+    <i
+        class="fa-brands fa-whatsapp"
+        aria-hidden="true"
+    ></i>
 
 </a>
 
@@ -1746,65 +2012,258 @@
      JAVASCRIPT
 ===================================================== -->
 
-<script src="script.js"></script>
+<script src="../js/script.js"></script>
 
 
 <script>
 
-    const homeMenuButton =
-        document.getElementById("menu-toggle");
-
-    const homeMobileMenu =
-        document.getElementById("mobile-menu");
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
 
 
-    if (homeMenuButton && homeMobileMenu) {
+            /* =============================================
+               MOBILE MENU
+            ============================================== */
 
-        homeMenuButton.addEventListener(
-            "click",
-            function () {
-
-                const isOpen =
-                    homeMobileMenu.classList.toggle("open");
+            const menuToggle =
+                document.getElementById("menu-toggle");
 
 
-                homeMenuButton.setAttribute(
-                    "aria-expanded",
-                    isOpen ? "true" : "false"
-                );
-
-            }
-        );
+            const mobileMenu =
+                document.getElementById("mobile-menu");
 
 
-        const homeMenuLinks =
-            homeMobileMenu.querySelectorAll("a");
+            if (menuToggle && mobileMenu) {
 
-
-        homeMenuLinks.forEach(
-            function (link) {
-
-                link.addEventListener(
+                menuToggle.addEventListener(
                     "click",
                     function () {
 
-                        homeMobileMenu.classList.remove("open");
+                        const isOpen =
+                            mobileMenu.classList.toggle("open");
 
-                        homeMenuButton.setAttribute(
+
+                        menuToggle.setAttribute(
                             "aria-expanded",
-                            "false"
+                            isOpen ? "true" : "false"
+                        );
+
+                    }
+                );
+
+
+                const mobileLinks =
+                    mobileMenu.querySelectorAll("a");
+
+
+                mobileLinks.forEach(
+                    function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                mobileMenu.classList.remove("open");
+
+
+                                menuToggle.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
                         );
 
                     }
                 );
 
             }
-        );
 
-    }
+
+
+            /* =============================================
+               HEADER SHADOW
+            ============================================== */
+
+            const header =
+                document.querySelector(".site-header");
+
+
+            if (header) {
+
+                window.addEventListener(
+                    "scroll",
+                    function () {
+
+                        if (window.scrollY > 20) {
+
+                            header.classList.add(
+                                "scrolled"
+                            );
+
+                        } else {
+
+                            header.classList.remove(
+                                "scrolled"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+
+            /* =============================================
+               SMOOTH SCROLL
+            ============================================== */
+
+            const internalLinks =
+                document.querySelectorAll(
+                    'a[href^="#"]'
+                );
+
+
+            internalLinks.forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function (event) {
+
+                            const targetId =
+                                this.getAttribute("href");
+
+
+                            if (
+                                !targetId ||
+                                targetId === "#"
+                            ) {
+                                return;
+                            }
+
+
+                            const target =
+                                document.querySelector(
+                                    targetId
+                                );
+
+
+                            if (target) {
+
+                                event.preventDefault();
+
+
+                                target.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start"
+                                });
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+
+            /* =============================================
+               SCROLL REVEAL
+            ============================================== */
+
+            const revealElements =
+                document.querySelectorAll(
+                    ".mh-category-card, " +
+                    ".new-madeira-image, " +
+                    ".new-madeira-content, " +
+                    ".language-intro, " +
+                    ".language-content, " +
+                    ".mh-foxglove-main, " +
+                    ".mh-foxglove-card, " +
+                    ".step, " +
+                    ".business-cta-inner, " +
+                    ".big-cta-inner, " +
+                    ".featured-partner-inner"
+                );
+
+
+            if (
+                "IntersectionObserver" in window
+            ) {
+
+
+                revealElements.forEach(
+                    function (element) {
+
+                        element.classList.add(
+                            "reveal"
+                        );
+
+                    }
+                );
+
+
+                const revealObserver =
+                    new IntersectionObserver(
+
+                        function (entries) {
+
+                            entries.forEach(
+                                function (entry) {
+
+                                    if (
+                                        entry.isIntersecting
+                                    ) {
+
+                                        entry.target.classList.add(
+                                            "visible"
+                                        );
+
+
+                                        revealObserver.unobserve(
+                                            entry.target
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+                        },
+
+                        {
+                            threshold: 0.12
+                        }
+
+                    );
+
+
+                revealElements.forEach(
+                    function (element) {
+
+                        revealObserver.observe(
+                            element
+                        );
+
+                    }
+                );
+
+            }
+
+
+        }
+    );
 
 </script>
 
+
+
+</main>
 
 </body>
 
