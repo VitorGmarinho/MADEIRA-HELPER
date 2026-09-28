@@ -11768,3 +11768,81 @@ body.foxglove-modal-open {
     }
 
 }
+
+/* =========================================================
+   MOBILE LANGUAGE SWITCHER
+========================================================= */
+
+@media (max-width: 900px) {
+
+    /* Keep header actions together */
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    /* Show EN | PT on mobile */
+    .header-actions .language-switcher {
+        display: flex !important;
+        align-items: center;
+        gap: 7px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .header-actions .language-link {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        line-height: 1;
+        text-decoration: none;
+        color: var(--dark);
+    }
+
+    .header-actions .language-link.active {
+        color: var(--green);
+    }
+
+    .header-actions .language-divider {
+        display: inline-block;
+        opacity: 0.35;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE HEADER
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .header-inner {
+        gap: 10px;
+    }
+
+    .header-actions {
+        gap: 10px;
+        margin-left: auto;
+    }
+
+    .header-actions .language-switcher {
+        gap: 5px;
+    }
+
+    .header-actions .language-link {
+        font-size: 0.78rem;
+    }
+
+    .header-actions .language-divider {
+        font-size: 0.75rem;
+    }
+
+    /* Hide large help button on small phones.
+       Help is still available inside the hamburger menu. */
+    .header-actions .nav-button {
+        display: none;
+    }
+
+}
