@@ -11713,3 +11713,58 @@ body.foxglove-modal-open {
 .foxglove-website-link:hover span {
     transform: translate(2px, -2px);
 }
+
+/* =====================================================
+   LANGUAGE SWITCHER
+===================================================== */
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-right: 4px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.language-switcher .language-link {
+    color: var(--dark);
+    text-decoration: none;
+    opacity: 0.5;
+
+    transition:
+        opacity 0.2s ease,
+        color 0.2s ease;
+}
+
+.language-switcher .language-link:hover {
+    opacity: 1;
+    color: var(--green);
+}
+
+.language-switcher .language-link.active {
+    color: var(--green);
+    opacity: 1;
+}
+
+.language-divider {
+    color: #c7cec9;
+    font-weight: 400;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .language-switcher {
+        font-size: 0.75rem;
+        gap: 5px;
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+}
